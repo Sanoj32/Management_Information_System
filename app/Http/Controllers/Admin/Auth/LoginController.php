@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use Auth;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -42,16 +43,27 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         //Validation...
+        $this->validator($request);
+        //check if the user has too many login attempts.
+        if ($this->hasTooManyLoginAttempts($request)) {
+            //Fire the lockout event.
+            $this->fireLockoutEvent($request);
+
+            //redirect the user back after lockout.
+            return $this->sendLockoutResponse($request);
+        }
 
         //Login the admin...
-        $this->validator($request);
         if (Auth::guard('admin')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
             // Authentication passed
             return redirect()
                 ->intended(route('admin.home'))
                 ->with('status', "You are logged in as an Admin!");
         }
-        dd('Should not be here');
+
+        //keep track of login attempts from the user.
+        $this->incrementLoginAttempts($request);
+
         //Authentication failed
         return $this->loginFailed();
 
@@ -67,6 +79,7 @@ class LoginController extends Controller
     {
         //logout the admin...
         Auth::guard('admin')->logout();
+        
         return redirect()
             ->route('admin.login')
             ->with('status', 'Admin has been logged out!');
@@ -106,5 +119,22 @@ class LoginController extends Controller
             ->back()
             ->withInput()
             ->with('error', 'Login failed, please try again!');
+    }
+
+    /**
+     * This trait has all the login throttling functionality.
+     */
+    use ThrottlesLogins;
+
+    //Your other code here...
+
+    /**
+     * Username used in ThrottlesLogins trait
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return 'email';
     }
 }

@@ -1,6 +1,6 @@
 Information System
 Attendance System
-Email after absent
+Email after absent needs another attribute with present and absent  like leave.
 
 //////////////
 debug text
@@ -9,8 +9,11 @@ could be app\models\admin
 
 /////////////
 BUGS TO FIX
-1 admin can go to /admin/login page after loggin in
+User is remembered even when the remember me is not ticked
+possibe fix- destroy session data or pull session data on the logout function
 
+Both admnin and user is logged out when the user ie teacher logs out.
+fix= All session data is invalidated and flushed when the user's logout method is called.
 ///////////
 ACUTAL ROUTES
 
