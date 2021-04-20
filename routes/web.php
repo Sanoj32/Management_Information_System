@@ -16,24 +16,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function(){
-    Route::namespace('Auth')->group(function(){
+Route::prefix('/admin')->name('admin.')->group(function () {
 
-        //Login Routes
-        Route::get('/login','LoginController@showLoginForm')->name('login');
-        Route::post('/login','LoginController@login');
-        Route::post('/logout','LoginController@logout')->name('logout');
+    //Login Routes
+    Route::get('/login', [App\Http\Controllers\Admin\Auth\LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [App\Http\Controllers\Admin\Auth\LoginController::class, 'login']);
+    Route::post('/logout', [App\Http\Controllers\Admin\Auth\LoginController::class, 'logout'])->name('logout');
 
-        //Forgot Password Routes
-        Route::get('/password/reset','ForgotPasswordController@showLinkRequestForm')->name('password.request');
-        Route::post('/password/email','ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+    //Forgot Password Routes
+    Route::get('/password/reset', [App\Http\Controllers\Admin\Auth\ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('/password/email', [App\Http\Controllers\Admin\Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 
-        //Reset Password Routes
-        Route::get('/password/reset/{token}','ResetPasswordController@showResetForm')->name('password.reset');
-        Route::post('/password/reset','ResetPasswordController@reset')->name('password.update');
+    //Reset Password Routes
+    Route::get('/password/reset/{token}', [App\Http\Controllers\Admin\Auth\ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::post('/password/reset', [App\Http\Controllers\Admin\Auth\ForgotPasswordController::class, 'reset'])->name('password.update');
+    Route::get('/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home')->middleware('auth:admin');
 
-    });
-})
+});
 
 Auth::routes();
 
