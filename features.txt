@@ -1,6 +1,8 @@
 Information System
 Attendance System
 Email after absent needs another attribute with present and absent  like leave.
+ADD CSRF TOKEN !!!!!!!!!!!!!!!!! 
+Laravel Vapour on AWS for serverless deployement?
 
 //////////////
 debug text
