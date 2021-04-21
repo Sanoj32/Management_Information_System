@@ -15,7 +15,7 @@ class CreateBctAttendancesTable extends Migration
     {
         Schema::create('bct_attendances', function (Blueprint $table) {
             $table->id();
-            $table->string('bct_subject_id'); //foreign from bct_subjects_table
+            $table->unsignedBigInteger('bct_subject_id'); //foreign from bct_subjects_table
             $table->smallInteger('batch_id'); //foreign key from bct_students_table
             $table->smallInteger('day');
             $table->timestamps();
