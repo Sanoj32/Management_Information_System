@@ -17,7 +17,8 @@ class CreateBctStudentsTable extends Migration
             $table->id();
             $table->string('name');
             $table->smallInteger('batch');
-            $table->string('roll_number');
+            $table->string('group');
+            $table->string('roll_number')->unique();
             $table->timestamps();
         });
     }

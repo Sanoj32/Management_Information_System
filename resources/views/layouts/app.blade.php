@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/checkbox.css') }}">
 
     <style>
         /* these styles will animate bootstrap alerts. */
@@ -23,7 +24,7 @@
         @media screen and (max-width: 668px) {
             .alert{ /* center the alert on small screens */
                 left: 10px;
-                right: 10px; 
+                right: 10px;
             }
         }
     </style>
@@ -38,7 +39,7 @@
     </main>
 
     <script src="{{asset('js/app.js')}}"></script>
-    
+
     {{-- Success Alert --}}
     @if(session('status'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -67,6 +68,6 @@
 	    }, 3000);
     	});
     </script>
-    
+
 </body>
 </html>
