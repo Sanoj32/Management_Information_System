@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
+use App\Models\BctStudent;
+use App\Models\BctSubject;
+use App\Models\User;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,6 +15,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        User::factory(10)->create();
+        BctStudent::factory()->count(10)->create();
+        BctSubject::factory()->count(5)->create();
     }
 }

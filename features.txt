@@ -47,3 +47,9 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
 Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+
+
+
+'name' => $this->faker->name(),
+            'group' => null,
+            'roll_number' => 'lec' + '0' + strval(rand(74,77)) + 'bct' + strval(rand(00,48)),

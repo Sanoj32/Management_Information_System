@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBctAttendancesTable extends Migration
+class CreateAuthorizedSubjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateBctAttendancesTable extends Migration
      */
     public function up()
     {
-        Schema::create('bct_attendances', function (Blueprint $table) {
+        Schema::create('authorized_subjects', function (Blueprint $table) {
             $table->id();
-            $table->string('subject_code'); //foreign from bct_subjects_table
-            $table->smallInteger('batch');
             $table->string('teacher_code');
-            $table->smallInteger('day');
-            $table->boolean('present');
-            $table->timestamps();
+            $table->string('subject_code');
 
-            $table->foreign('subject_code')->references('subject_code')->on('bct_subjects');
             $table->foreign('teacher_code')->references('teacher_code')->on('users');
+            $table->foreign('subject_code')->references('subject_code')->on('bct_subjects');
+            $table->timestamps();
         });
     }
 
@@ -34,6 +31,6 @@ class CreateBctAttendancesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bct_attendances');
+        Schema::dropIfExists('authorized_subjects');
     }
 }

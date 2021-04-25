@@ -16,8 +16,7 @@ class CreateBctStudentsTable extends Migration
         Schema::create('bct_students', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->smallInteger('batch');
-            $table->string('group');
+            $table->string('group')->nullable();
             $table->string('roll_number')->unique();
             $table->timestamps();
         });
