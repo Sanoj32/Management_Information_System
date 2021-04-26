@@ -12,7 +12,7 @@ could be app\models\admin
 
 /////////////
 BUGS TO FIX
-User is remembered even when the remember me is not ticked
+User is remembered even when the remember me is not ticked (maybe be rememebered for 60 minutes)
 possibe fix- destroy session data or pull session data on the logout function
 Add a password reset option.
 Both admnin and user is logged out when the user ie teacher logs out.
@@ -50,6 +50,3 @@ Route::get('email/resend', 'Auth\VerificationController@resend')->name('verifica
 
 
 
-'name' => $this->faker->name(),
-            'group' => null,
-            'roll_number' => 'lec' + '0' + strval(rand(74,77)) + 'bct' + strval(rand(00,48)),

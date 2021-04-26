@@ -9,12 +9,14 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <div class="card">
+                        <h5 class="card-title">74th batch</h5>
+                    </div>
                 </div>
             </div>
         </div>

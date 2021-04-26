@@ -32,10 +32,14 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::post('/password/reset', [App\Http\Controllers\Admin\Auth\ForgotPasswordController::class, 'reset'])->name('password.update');
     Route::get('/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home')->middleware('auth:admin');
 
+    //Grant various permissions
+    Route::get('/teachers',[])
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/test', [App\Http\Controllers\WebsiteController::class, 'index']);
-Route::post('/test',[\App\Http\Controllers\WebsiteController::class,'takeAttendance'])->name('attendance');
+Route::post('/test', [App\Http\Controllers\WebsiteController::class, 'takeAttendance'])->name('attendance');
+// Route::get('/attendance/bct/{batch}/{subject_code}',[])
+Route::get('/dashboard', [App\Http\Controllers\AttendanceController::class, 'index']);  // this is where the teachers land after loggin in.

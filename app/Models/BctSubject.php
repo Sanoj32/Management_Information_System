@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class BctSubject extends Model
 {
+    protected $guarded = [];
     use HasFactory;
+    public function teachers()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

@@ -40,4 +40,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The subjects a teacher can teach
+     */
+
+    public function bctSubjects()
+    {
+        return $this->belongsToMany(BctSubject::class, 'bct_subjects_permission');
+    }
 }
