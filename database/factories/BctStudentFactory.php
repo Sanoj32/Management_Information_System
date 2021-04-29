@@ -24,7 +24,7 @@ class BctStudentFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'group' => null,
-            'roll_number' => 'lec' . '0' . strval(rand(74, 77)) . 'bct' . strval(rand(01, 48)),
+            'roll_number' => 'lec' . '0' . strval(rand(50, 99)) . 'bct' . strval(rand(01, 99)),
         ];
     }
 }

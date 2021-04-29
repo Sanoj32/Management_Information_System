@@ -1,6 +1,9 @@
 <?php
 
+// use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,13 +36,14 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home')->middleware('auth:admin');
 
     //Grant various permissions
-    Route::get('/teachers',[])
+    Route::get('/teachers', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'index']);
+    Route::get('/teachers/{teacher_code}', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'showProfile']);
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/test', [App\Http\Controllers\WebsiteController::class, 'index']);
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/test', [App\Http\Controllers\WebsiteController::class, 'test']);
 Route::post('/test', [App\Http\Controllers\WebsiteController::class, 'takeAttendance'])->name('attendance');
 // Route::get('/attendance/bct/{batch}/{subject_code}',[])
-Route::get('/dashboard', [App\Http\Controllers\AttendanceController::class, 'index']);  // this is where the teachers land after loggin in.
+Route::get('/home', [App\Http\Controllers\AttendanceController::class, 'index'])->name('home');  // this is where the teachers land after loggin in.

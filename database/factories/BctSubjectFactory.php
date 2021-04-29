@@ -25,7 +25,8 @@ class BctSubjectFactory extends Factory
         $array = [
             'Mathematics 1', 'Applied Maths', 'Electromagnetics', 'Drawing 1', 'Drawing 2', 'Probability and Statistics', 'Engineering Chemistry', 'Fundamental of Thermodynamics  & Heat Transfer',
             'Workshop Technology', 'Computer Programming', 'Engineering Physics', 'Applied Mechanics', 'Basic Electrical Engineering',
-            'Mathematics 2', 'Mathematics 3', 'Object Oriented Programming', 'Electrical Circuit Theory', 'Theory of Computation'
+            'Mathematics 2', 'Mathematics 3', 'Object Oriented Programming', 'Electrical Circuit Theory', 'Theory of Computation',
+            'ECT', 'OOAD'
         ];
         return [
             'subject_code' => Str::random(6),

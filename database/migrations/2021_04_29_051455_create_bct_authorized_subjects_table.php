@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBctSubjectsPermissionTable extends Migration
+class CreateBctAuthorizedSubjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBctSubjectsPermissionTable extends Migration
      */
     public function up()
     {
-        Schema::create('bct_subjects_permission', function (Blueprint $table) {
+        Schema::create('bct_authorized_subjects', function (Blueprint $table) {
             $table->id();
             $table->string('teacher_code');
             $table->string('subject_code');
@@ -31,6 +31,6 @@ class CreateBctSubjectsPermissionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bct_subjects_permission');
+        Schema::dropIfExists('bct_authorized_subjects');
     }
 }

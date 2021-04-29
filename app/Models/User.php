@@ -16,11 +16,13 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    // protected $fillable = [
+    //     'name',
+    //     'email',
+    //     'password',
+    //     'teacher_code'
+    // ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -47,6 +49,6 @@ class User extends Authenticatable
 
     public function bctSubjects()
     {
-        return $this->belongsToMany(BctSubject::class, 'bct_subjects_permission');
+        return $this->belongsToMany(BctSubject::class, 'bct_authorized_subjects', 'teacher_code', 'subject_code')->as('bct_authorized_subjects');
     }
 }
