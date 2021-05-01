@@ -14,8 +14,7 @@ class CreateBctSubjectsTable extends Migration
     public function up()
     {
         Schema::create('bct_subjects', function (Blueprint $table) {
-            $table->id();
-            $table->string('subject_code')->unique(); // unique code to represent the subject
+            $table->string('subject_code')->primary(); // unique code to represent the subject
             $table->string('name')->unique();
             $table->smallInteger('semester');
             $table->timestamps();

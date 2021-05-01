@@ -12,11 +12,8 @@
                         {{$teacher->name}}
                     </ul>
                     <h2>Permissions</h2>
-                    <?php
-                    ;
-                    dd($subs);
-                     ?>
-
+                    {{-- LIST THE PERMISSIONS OF A TEACHER HERE. --}}
+                    <a href="/admin/teachers/<?=$teacher->teacher_code?>/edit"><button class="btn btn-dark"> Edit permissions </button> </a>
                 </div>
             </div>
         </div>

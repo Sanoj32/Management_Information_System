@@ -29,7 +29,7 @@ class BctSubjectFactory extends Factory
             'ECT', 'OOAD'
         ];
         return [
-            'subject_code' => Str::random(6),
+            'subject_code' => 'bct' . Str::random(6),
             'name' => $array[array_rand($array, 1)],
             'semester' => rand(1, 8)
 

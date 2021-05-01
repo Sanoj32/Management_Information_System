@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\BctStudent;
+use App\Models\BctSubject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,7 +14,7 @@ class AttendancePermissionController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('auth:admin');
+        $this->middleware('auth:admin');
     }
 
     /**
@@ -30,7 +32,27 @@ class AttendancePermissionController extends Controller
     {
         // dd($teacher_code);
 
-        $teacher = DB::table('users')->where('teacher_code', $teacher_code)->get()->first();
+        $teacher = User::where('teacher_code', $teacher_code)->get()->first();
         return view('teacher.profile', compact('teacher'));
+    }
+    public function showEditView($teacher_code)
+    {
+        $subjects = BctSubject::all();
+        $first = $subjects->where('semester', 1);
+        $second = $subjects->where('semester', 2);
+        $third = $subjects->where('semester', 3);
+        $fourth = $subjects->where('semester', 4);
+        $fifth = $subjects->where('semester', 5);
+        $sixth = $subjects->where('semester', 6);
+        $seventh = $subjects->where('semester', 7);
+        $eighth = $subjects->where('semester', 8);
+
+        return view('admin.editPermission', compact('first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'teacher_code'));
+    }
+    public function changePermission($teacher_code, $subject_code)
+    {
+        $teacher = User::where('teacher_code', $teacher_code)->get()->first();
+        $teacher = User::find($teacher_code);
+        dd($teacher->bctSubjects()->toggle($subject_code));
     }
 }

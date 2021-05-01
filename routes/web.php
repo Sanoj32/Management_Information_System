@@ -38,6 +38,8 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     //Grant various permissions
     Route::get('/teachers', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'index']);
     Route::get('/teachers/{teacher_code}', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'showProfile']);
+    Route::get('/teachers/{teacher_code}/edit', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'showEditView']);
+    Route::post('/teachers/{teacher_code}/edit/{subject_code}', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'changePermission']);
 });
 
 Auth::routes();
