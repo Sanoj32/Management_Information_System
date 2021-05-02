@@ -21,6 +21,10 @@ class WebsiteController extends Controller
             'subject_code' => 'M5UsfP'
         ]);
     }
+    public function vue()
+    {
+        return view('vue');
+    }
 
     public function takeAttendance(Request $request)
     {

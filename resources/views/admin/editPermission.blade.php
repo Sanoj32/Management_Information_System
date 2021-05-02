@@ -3,6 +3,7 @@
 @section('content')
 {{-- This view is responsible for showing the permission edit view to the admin exclusively.
 From here admin can grant and revoke permissions to teachers for editing attendance --}}
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-9">
@@ -13,22 +14,54 @@ From here admin can grant and revoke permissions to teachers for editing attenda
                 <li class="list-group-item">
                     <span>
                         <h5>{{$fir->name}}
-                            <form method="POST" action="/admin/teachers/<?=$teacher_code?>/edit/<?=$fir->subject_code?>">
-                                @csrf
-                                <div id="app">
-                                    <app></app>
-                                </div>
-                            </form>
                         </h5>
                     </span>
                 </li>
                 @endforeach
             </ul>
             <h3> Second Semester</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="app-2">
+                <span v-bind:title="message">
+                    Hover your mouse over me for a few seconds
+                    to see my dynamically bound title!
+                </span>
+            </div>
+            <div id="app-3">
+                <span v-if="sed">Now you see me</span>
+            </div>
+
+            
+
+
+
+
+
+
+
+
+
+
             <ul class="list-group pb-3 pt-1">
                 @foreach ($second as $sec)
                 <li class="list-group-item">
                     <h5>{{$sec->name}}</h5>
+
                 </li>
                 @endforeach
             </ul>
@@ -83,5 +116,5 @@ From here admin can grant and revoke permissions to teachers for editing attenda
         </div>
     </div>
 </div>
-<script src={{mix('js/app.js')}}></script>
+
 @endsection

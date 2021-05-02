@@ -38,7 +38,7 @@
         @yield('content')
     </main>
 
-    <script src="{{asset('js/app.js')}}"></script>
+    <script  src="{{asset('js/app.js')}}"></script>
 
     {{-- Success Alert --}}
     @if(session('status'))

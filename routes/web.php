@@ -1,6 +1,8 @@
 <?php
 
 // use Illuminate\Support\Facades\App;
+
+use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,6 +48,7 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/test', [App\Http\Controllers\WebsiteController::class, 'test']);
+Route::get('/vue', [\App\Http\Controllers\WebsiteController::class, 'vue']);
 Route::post('/test', [App\Http\Controllers\WebsiteController::class, 'takeAttendance'])->name('attendance');
 // Route::get('/attendance/bct/{batch}/{subject_code}',[])
 Route::get('/home', [App\Http\Controllers\AttendanceController::class, 'index'])->name('home');  // this is where the teachers land after loggin in.
