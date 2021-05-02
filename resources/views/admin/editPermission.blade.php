@@ -15,7 +15,9 @@ From here admin can grant and revoke permissions to teachers for editing attenda
                         <h5>{{$fir->name}}
                             <form method="POST" action="/admin/teachers/<?=$teacher_code?>/edit/<?=$fir->subject_code?>">
                                 @csrf
-                                <button class="btn btn-success float-right" type="submit">A view component</button>
+                                <div id="app">
+                                    <app></app>
+                                </div>
                             </form>
                         </h5>
                     </span>
@@ -81,4 +83,5 @@ From here admin can grant and revoke permissions to teachers for editing attenda
         </div>
     </div>
 </div>
+<script src={{mix('js/app.js')}}></script>
 @endsection
