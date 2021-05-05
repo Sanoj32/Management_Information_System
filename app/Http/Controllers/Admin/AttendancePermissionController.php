@@ -46,13 +46,12 @@ class AttendancePermissionController extends Controller
         $sixth = $subjects->where('semester', 6);
         $seventh = $subjects->where('semester', 7);
         $eighth = $subjects->where('semester', 8);
-
-        return view('admin.editPermission', compact('first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'teacher_code'));
+        $teacher = User::where('teacher_code', $teacher_code)->first();
+        return view('admin.editPermission', compact('first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'teacher_code', 'teacher'));
     }
     public function changePermission($teacher_code, $subject_code)
     {
-        $teacher = User::where('teacher_code', $teacher_code)->get()->first();
-        $teacher = User::find($teacher_code);
-        dd($teacher->bctSubjects()->toggle($subject_code));
+        $teacher = User::where('teacher_code', $teacher_code)->first();
+        $teacher->bctSubjects()->toggle($subject_code);
     }
 }
