@@ -13,7 +13,6 @@ class BctSubject extends Model
     protected $primaryKey = 'subject_code';
     protected $keyType = 'string';
     public $incrementing = false;
-    
 
     public function teachers()
     {

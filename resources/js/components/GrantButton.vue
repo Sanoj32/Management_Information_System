@@ -1,37 +1,39 @@
 <template>
-    <div>
+    <span>
         <button
-        class="btn"
-        v-bind:class=" { 'btn-success' : present, 'btn-danger' : absent }"
+        class="btn float-right"
+        v-bind:class=" { 'btn-success' : success, 'btn-danger' : danger }"
         @click='grant'
         > {{this.buttontext}} </button>
-    </div>
+    </span>
 </template>
 
 <script>
 export default {
     mounted() {
-        console.log('component mounted')
+        console.log('component munted');
+        console.log(this.connection, this.subjectCode,this.teacherCode)
     },
-    props: ['teacher_code','subject_code'],
+    props:['connection','subjectCode','teacherCode']
+    ,
     data: function() {
         return {
-            present: true,
-            absent: false,
+            danger: this.connection,
+            success: !this.connection
         };
     },
     computed:{
         buttontext: function(){
-            return this.present ? 'Grant' : 'Revoke';
+            return this.danger ? 'Revoke' : 'Grant';
         }
     },
     methods:{
         grant: function(){
             // console.log('Teacher id is '+ this.teacher_code + "subject id is" + this.subject_code)
-            axios.post("/admin/teachers/" + this.teacher_code + "/edit/" + this.subject_code).then(response => {
-                this.present = !this.present;
-                this.absent = !this.present;
-                if(this.present == true){
+            axios.post("/admin/teachers/" + this.teacherCode + "/edit/" + this.subjectCode).then(response => {
+                this.success = !this.success;
+                this.danger = !this.success;
+                if(this.success == true){
                     this.message = "grant"
                 }else{
                     this.message = "revoke"

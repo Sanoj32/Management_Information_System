@@ -26,6 +26,6 @@ import Vue from 'vue'
 
  Vue.component('grant-button', require('./components/GrantButton.vue').default);
 
- const app = new Vue({
+ var app = new Vue({
   el: '#app',
 });
