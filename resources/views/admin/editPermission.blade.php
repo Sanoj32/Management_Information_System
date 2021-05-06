@@ -9,7 +9,6 @@ From here admin can grant and revoke permissions to teachers for editing attenda
     <div id='app'>
         <div class="row justify-content-center">
             <div class="col-md-9">
-
                 <h2>Grant or revoke permission to edit attendance for {{$teacher->name}}</h2>
                 <h3> First Semester</h3>
                 <ul class="list-group pb-3 pt-1">

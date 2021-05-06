@@ -1,0 +1,374 @@
+[
+    {
+        "name": "Mathematics I",
+        "subject_code": "bctSH401",
+        "semester": 1
+    },
+    {
+        "name": "Computer Programming",
+        "subject_code": "bctCT401",
+        "semester": 1
+    },
+    {
+        "name": "Engineering Drawing I",
+        "subject_code": "bctME401",
+        "semester": 1
+    },
+    {
+        "name": "Engineering Physics",
+        "subject_code": "bctSH452",
+        "semester": 1
+    },
+    {
+        "name": "Applied Mechanics",
+        "subject_code": "bctCE451",
+        "semester": 1
+    },
+    {
+        "name": "Basic Electrical Engineering",
+        "subject_code": "bctEE451",
+        "semester": 1
+    },
+    {
+        "name": "Mathematics II",
+        "subject_code": "bctSH451",
+        "semester": 2
+    },
+    {
+        "name": "Engineering Drawing II",
+        "subject_code": "bctME451",
+        "semester": 2
+    },
+    {
+        "name": "Basic Electronics Engineering",
+        "subject_code": "bctEX451",
+        "semester": 2
+    },
+    {
+        "name": "Engineering Chemistry",
+        "subject_code": "bctSH403",
+        "semester": 2
+    },
+    {
+        "name": "Fundamental of Thermoodynamics & Heat Transfer",
+        "subject_code": "bctME402",
+        "semester": 2
+    },
+    {
+        "name": "Workshop Technology",
+        "subject_code": "bctME453",
+        "semester": 2
+    },
+    {
+        "name": "Engineering Mathematics III",
+        "subject_code": "bctSH501",
+        "semester": 2
+    },
+    {
+        "name": "Object Oriented Programming",
+        "subject_code": "bctCT501",
+        "semester": 3
+    },
+    {
+        "name": "Electric Circuit Theory",
+        "subject_code": "bctEE501",
+        "semester": 3
+    },
+    {
+        "name": "Theory of Computation",
+        "subject_code": "bctCT502",
+        "semester": 3
+    },
+    {
+        "name": "Electronics Devices and Circuit",
+        "subject_code": "bctEX501",
+        "semester": 3
+    },
+    {
+        "name": "Digital Logic",
+        "subject_code": "bctEX502",
+        "semester": 3
+    },
+    {
+        "name": "Electromagnetics",
+        "subject_code": "bctEX503",
+        "semester": 3
+    },
+    {
+        "name": "Numerical Method",
+        "subject_code": "bctSH533",
+        "semester": 4
+    },
+    {
+        "name": "Applied Mathematics",
+        "subject_code": "bctSH551",
+        "semester": 4
+    },
+    {
+        "name": "Instrumentation I",
+        "subject_code": "bctEE552",
+        "semester": 4
+    },
+    {
+        "name": "Data Structure and Algorithm",
+        "subject_code": "bctCT552",
+        "semester": 4
+    },
+    {
+        "name": "Microprocessor",
+        "subject_code": "bctEX551",
+        "semester": 4
+    },
+    {
+        "name": "Discrete Structure",
+        "subject_code": "bctCT551",
+        "semester": 4
+    },
+    {
+        "name": "Electrical Machine",
+        "subject_code": "EE554",
+        "semester": 4
+    },
+    {
+        "name": "Communication English",
+        "subject_code": "bctSH601",
+        "semester": 5
+    },
+    {
+        "name": "Probability and Statistics",
+        "subject_code": "bctSH602",
+        "semester": 5
+    },
+    {
+        "name": "Computer Organization and Architecture",
+        "subject_code": "bctCT603",
+        "semester": 5
+    },
+    {
+        "name": "Software Engineering",
+        "subject_code": "bctCT601",
+        "semester": 5
+    },
+    {
+        "name": "Computer Graphics",
+        "subject_code": "bctEX603",
+        "semester": 5
+    },
+    {
+        "name": "Instrumentation II",
+        "subject_code": "bctEX602",
+        "semester": 5
+    },
+    {
+        "name": "Data Communication",
+        "subject_code": "bctCT602",
+        "semester": 5
+    },
+    {
+        "name": "Engineering Economics",
+        "subject_code": "bctCE655",
+        "semester": 6
+    },
+    {
+        "name": "Object Oriented Analysis and Design",
+        "subject_code": "bctCT651",
+        "semester": 6
+    },
+
+    {
+        "name": "Artificial Intelligence",
+        "subject_code": "bctCT653",
+        "semester": 6
+    },
+    {
+        "name": "Operating System",
+        "subject_code": "bctCT656",
+        "semester": 6
+    },
+    {
+        "name": "Embedded System",
+        "subject_code": "bctCT655",
+        "semester": 6
+    },
+    {
+        "name": "Database Management System",
+        "subject_code": "bctCT652",
+        "semester": 6
+    },
+    {
+        "name": "Minor Project",
+        "subject_code": "bctCT654",
+        "semester": 6
+    },
+
+    {
+        "name": "ICT Project Management",
+        "subject_code": "bctCT701",
+        "semester": 7
+    },
+    {
+        "name": "Organization and Management",
+        "subject_code": "bctME708",
+        "semester": 7
+    },
+    {
+        "name": "Energy Environment and Society",
+        "subject_code": "bctEX701",
+        "semester": 7
+    },
+    {
+        "name": "Distributed System",
+        "subject_code": "bctCT703",
+        "semester": 7
+    },
+    {
+        "name": "Computer Networks and Security",
+        "subject_code": "bctCT702",
+        "semester": 7
+    },
+    {
+        "name": "Digital Signal Analysis and Processing",
+        "subject_code": "bctCT704",
+        "semester": 7
+    },
+    {
+        "name": "Project (Part A) ",
+        "subject_code": "bctCT707",
+        "semester": 7
+    },
+    {
+        "name": "Elective I : Advanced Java ",
+        "subject_code": "bctCT72501",
+        "semester": 7
+    },
+    {
+        "name": "Elective I : Aeronautical Telecom",
+        "subject_code": "bctEX72504",
+        "semester": 7
+    },
+    {
+        "name": "Elective I : Image Processing",
+        "subject_code": "bctCT72504",
+        "semester": 7
+    },
+    {
+        "name": "Elective I : Microwave Engineering ",
+        "subject_code": "bctEX72505",
+        "semester": 7
+    },
+    {
+        "name": "Elective I : Web Technology",
+        "subject_code": "bctCT72505",
+        "semester": 7
+    },
+    {
+        "name": "Engineering Professional Practise ",
+        "subject_code": "bctCE752",
+        "semester": 8
+    },
+    {
+        "name": "Information Systems",
+        "subject_code": "bctCT751",
+        "semester": 8
+    },
+    {
+        "name": "Internet and Intranet",
+        "subject_code": "bctCT754",
+        "semester": 8
+    },
+    {
+        "name": "Project (Part B)",
+        "subject_code": "bctCT755",
+        "semester": 8
+    },
+    {
+        "name": "Simulation and Modelling",
+        "subject_code": "bctCT753",
+        "semester": 8
+    },
+    {
+        "name": "Elective II: Advanced Computer Architecture",
+        "subject_code": "bctCT76504",
+        "semester": 8
+    },
+    {
+        "name": "Elective II: Agile Software Development",
+        "subject_code": "bctCT76502",
+        "semester": 8
+    },
+    {
+        "name": "Elective II: Big Data Technologies",
+        "subject_code": "bctCT76507",
+        "semester": 8
+    },
+    {
+        "name": "Elective II: Broadcast Engineering",
+        "subject_code": "bctEX76503",
+        "semester": 8
+    },
+    {
+        "name": "Elective II: Database Managemetn Systems",
+        "subject_code": "bctEX76506",
+        "semester": 8
+    },
+    {
+        "name": "Elective II: Networking with IPV6",
+        "subject_code": "bctCT76506",
+        "semester": 8
+    },
+    {
+        "name": "Elective II: Optical Fiber Communication System",
+        "subject_code": "bctEX76501",
+        "semester": 8
+    },
+    {
+        "name": "Elective II: Wireless Communications",
+        "subject_code": "bctEX76504",
+        "semester": 8
+    },
+    {
+        "name": "Elective II: Artificial Intelligence",
+        "subject_code": "bctCT78506",
+        "semester": 8
+    },
+    {
+        "name": "Elective III: Enterprise Application Design and Development",
+        "subject_code": "bctCT78504",
+        "semester": 8
+    },
+    {
+        "name": "Elective III: Geographical Information System",
+        "subject_code": "bctCT78507",
+        "semester": 8
+    },
+    {
+        "name": "Elective III: Multimedia System",
+        "subject_code": "bctCT78503",
+        "semester": 8
+    },
+    {
+        "name": "Elective III: Power Electronics",
+        "subject_code": "bctEE78507",
+        "semester": 8
+    },
+    {
+        "name": "Elective III: Remote Sensing",
+        "subject_code": "bctCT78501",
+        "semester": 8
+    },
+    {
+        "name": "Elective III: Speech Processing ",
+        "subject_code": "bctCT78508",
+        "semester": 8
+    },
+    {
+        "name": "Elective III: Telecommunication",
+        "subject_code": "bctEX78503",
+        "semester": 8
+    },
+    {
+        "name": "Elective III: XML: Foundations, Techniques and Applications",
+        "subject_code": "bctCT78505",
+        "semester": 8
+    }
+]

@@ -30,10 +30,12 @@ class AttendancePermissionController extends Controller
     }
     public function showProfile($teacher_code)
     {
-        // dd($teacher_code);
+
+
 
         $teacher = User::where('teacher_code', $teacher_code)->get()->first();
-        return view('teacher.profile', compact('teacher'));
+        $authorizedSubjects = $teacher->bctSubjects;
+        return view('teacher.profile', compact('teacher', 'authorizedSubjects'));
     }
     public function showEditView($teacher_code)
     {

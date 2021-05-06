@@ -10,10 +10,6 @@
 
 <script>
 export default {
-    mounted() {
-        console.log('component munted');
-        console.log(this.connection, this.subjectCode,this.teacherCode)
-    },
     props:['connection','subjectCode','teacherCode']
     ,
     data: function() {
