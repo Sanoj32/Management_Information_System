@@ -51,7 +51,7 @@ class User extends Authenticatable
 
     public function bctSubjects()
     {
-        return $this->belongsToMany(BctSubject::class, 'bct_authorized_subjects', 'teacher_code', 'subject_code')->as('bct_authorized_subjects')->withPivot('batch');
+        return $this->belongsToMany(BctSubject::class, 'bct_authorized_subjects', 'teacher_code', 'subject_code')->as('bctAuthorizedSubjects')->withPivot('batch');
     }
     public function yo()
     {

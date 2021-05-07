@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AttendanceController extends Controller
 {
@@ -14,7 +16,11 @@ class AttendanceController extends Controller
     {
         //get the subjects the authenticated teacher is allowed to teach
         $teacher = auth()->user();
-        
-        return view('teacher.home', compact('user'));
+        // $teacher_code = $teacher->teacher_code;
+        // $subjects = DB::table('bct_authorized_subjects')->where('teacher_code', $teacher_code)->get();
+        // foreach ($subjects as $sub) {
+        //     echo $sub->batch;
+        // }
+        return view('teacher.home', compact('teacher'));
     }
 }

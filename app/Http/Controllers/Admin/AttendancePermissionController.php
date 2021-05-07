@@ -9,6 +9,9 @@ use App\Models\BctStudent;
 use App\Models\BctSubject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rules\Exists;
+use League\CommonMark\Extension\Table\Table;
+use Symfony\Component\Console\Helper\TableRows;
 
 class AttendancePermissionController extends Controller
 {
@@ -29,7 +32,7 @@ class AttendancePermissionController extends Controller
     public function showProfile($teacher_code)
     {
         $teacher = User::where('teacher_code', $teacher_code)->get()->first();
-        $authorizedSubjects = $teacher->bctSubjects;
+        $authorizedSubjects = DB::table('bct_authorized_subjects')->where('teacher_code', $teacher_code)->get();
         return view('teacher.profile', compact('teacher', 'authorizedSubjects'));
     }
     public function showEditView($teacher_code, $batch)
@@ -49,8 +52,12 @@ class AttendancePermissionController extends Controller
     public function changePermission($teacher_code, $batch, $subject_code)
     {
         $teacher = User::where('teacher_code', $teacher_code)->first();
-        if ($teacher->bctSubjects->contains($subject_code)) {
-            $teacher->bctSubjects()->detach($subject_code, ['batch' => $batch]);
+        $exists = DB::table('bct_authorized_subjects')
+            ->where('subject_code', $subject_code)
+            ->where('teacher_code', $teacher_code)
+            ->where('batch', $batch);
+        if ($exists->count() == 1) {
+            $exists->delete();
         } else {
             $teacher->bctSubjects()->attach($subject_code, ['batch' => $batch]);
         }

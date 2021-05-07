@@ -9,7 +9,9 @@ From here admin can grant and revoke permissions to teachers for editing attenda
     <div id='app'>
         <div class="row justify-content-center">
             <div class="col-md-9">
-                <h2>Grant or revoke permission to edit attendance for <span class="font-italic">" {{$teacher->name}} " for {{$batch}}th batch <span></h2>
+                <h2>Grant or revoke permission to edit attendance for <div class="font-weight-bold">" {{$teacher->name}} " for {{$batch}}th batch <div>
+                </h2>
+                <hr>
                 <h3> First Semester</h3>
                 <ul class="list-group pb-3 pt-1">
                     @foreach ($first as $one)
@@ -18,7 +20,15 @@ From here admin can grant and revoke permissions to teachers for editing attenda
                         <span>
                             <h5 class="display-inline center pt-2">{{$one->name}}</h5>
                             <?php
-                            $connection = $teacher->bctSubjects->contains($one->subject_code);
+                                //check if a connection exists for a particular batch
+                                $connection = false;
+                                $exists = DB::table('bct_authorized_subjects')
+                                ->where('subject_code',$one->subject_code)
+                                ->where('teacher_code',$teacher_code)
+                                ->where('batch',$batch);
+                                if($exists->count() == 1){
+                                    $connection = true;
+                                }
                              ?>
 
                             <grant-button batch="<?=$batch?>" connection="<?= $connection?>" teacher-code="<?= $teacher_code ?>" subject-code="<?= $one->subject_code ?>"> </grant-button>
@@ -35,10 +45,18 @@ From here admin can grant and revoke permissions to teachers for editing attenda
                         <span>
                             <h5 class="display-inline center pt-2">{{$two->name}}</h5>
                             <?php
-                            $connection = $teacher->bctSubjects->contains($two->subject_code);
+                                //check if a connection exists for a particular batch
+                                $connection = false;
+                                $exists = DB::table('bct_authorized_subjects')
+                                ->where('subject_code',$two->subject_code)
+                                ->where('teacher_code',$teacher_code)
+                                ->where('batch',$batch);
+                                if($exists->count() == 1){
+                                    $connection = true;
+                                }
                              ?>
 
-                            <grant-button connection="<?= $connection?>" teacher-code="<?= $teacher_code ?>" subject-code="<?= $two->subject_code ?>"> </grant-button>
+                            <grant-button batch="<?=$batch?>" connection="<?= $connection?>" teacher-code="<?= $teacher_code ?>" subject-code="<?= $two->subject_code ?>"> </grant-button>
                         </span>
 
                     </li>
@@ -52,10 +70,18 @@ From here admin can grant and revoke permissions to teachers for editing attenda
                         <span>
                             <h5 class="display-inline center pt-2">{{$three->name}}</h5>
                             <?php
-                            $connection = $teacher->bctSubjects->contains($three->subject_code);
+                                //check if a connection exists for a particular batch
+                                $connection = false;
+                                $exists = DB::table('bct_authorized_subjects')
+                                ->where('subject_code',$three->subject_code)
+                                ->where('teacher_code',$teacher_code)
+                                ->where('batch',$batch);
+                                if($exists->count() == 1){
+                                    $connection = true;
+                                }
                              ?>
 
-                            <grant-button connection="<?= $connection?>" teacher-code="<?= $teacher_code ?>" subject-code="<?= $three->subject_code ?>"> </grant-button>
+                            <grant-button batch="<?=$batch?>" connection="<?= $connection?>" teacher-code="<?= $teacher_code ?>" subject-code="<?= $three->subject_code ?>"> </grant-button>
                         </span>
 
 
@@ -69,10 +95,18 @@ From here admin can grant and revoke permissions to teachers for editing attenda
                         <span>
                             <h5 class="display-inline center pt-2">{{$four->name}}</h5>
                             <?php
-                            $connection = $teacher->bctSubjects->contains($four->subject_code);
+                                //check if a connection exists for a particular batch
+                                $connection = false;
+                                $exists = DB::table('bct_authorized_subjects')
+                                ->where('subject_code',$four->subject_code)
+                                ->where('teacher_code',$teacher_code)
+                                ->where('batch',$batch);
+                                if($exists->count() == 1){
+                                    $connection = true;
+                                }
                              ?>
 
-                            <grant-button connection="<?= $connection?>" teacher-code="<?= $teacher_code ?>" subject-code="<?= $four->subject_code ?>"> </grant-button>
+                            <grant-button batch="<?=$batch?>" connection="<?= $connection?>" teacher-code="<?= $teacher_code ?>" subject-code="<?= $four->subject_code ?>"> </grant-button>
                         </span>
 
                     </li>
@@ -86,10 +120,18 @@ From here admin can grant and revoke permissions to teachers for editing attenda
                         <span>
                             <h5 class="display-inline center pt-2">{{$five->name}}</h5>
                             <?php
-                            $connection = $teacher->bctSubjects->contains($five->subject_code);
+                                //check if a connection exists for a particular batch
+                                $connection = false;
+                                $exists = DB::table('bct_authorized_subjects')
+                                ->where('subject_code',$five->subject_code)
+                                ->where('teacher_code',$teacher_code)
+                                ->where('batch',$batch);
+                                if($exists->count() == 1){
+                                    $connection = true;
+                                }
                              ?>
 
-                            <grant-button connection="<?= $connection?>" teacher-code="<?= $teacher_code ?>" subject-code="<?= $five->subject_code ?>"> </grant-button>
+                            <grant-button batch="<?=$batch?>" connection="<?= $connection?>" teacher-code="<?= $teacher_code ?>" subject-code="<?= $five->subject_code ?>"> </grant-button>
                         </span>
                     </li>
                     @endforeach
@@ -102,10 +144,18 @@ From here admin can grant and revoke permissions to teachers for editing attenda
                         <span>
                             <h5 class="display-inline center pt-2">{{$six->name}}</h5>
                             <?php
-                            $connection = $teacher->bctSubjects->contains($six->subject_code);
+                                //check if a connection exists for a particular batch
+                                $connection = false;
+                                $exists = DB::table('bct_authorized_subjects')
+                                ->where('subject_code',$six->subject_code)
+                                ->where('teacher_code',$teacher_code)
+                                ->where('batch',$batch);
+                                if($exists->count() == 1){
+                                    $connection = true;
+                                }
                              ?>
 
-                            <grant-button connection="<?= $connection?>" teacher-code="<?= $teacher_code ?>" subject-code="<?= $six->subject_code ?>"> </grant-button>
+                            <grant-button batch="<?=$batch?>" connection="<?= $connection?>" teacher-code="<?= $teacher_code ?>" subject-code="<?= $six->subject_code ?>"> </grant-button>
                         </span>
                     </li>
                     @endforeach
@@ -117,10 +167,18 @@ From here admin can grant and revoke permissions to teachers for editing attenda
                         <span>
                             <h5 class="display-inline center pt-2">{{$seven->name}}</h5>
                             <?php
-                            $connection = $teacher->bctSubjects->contains($seven->subject_code);
+                                //check if a connection exists for a particular batch
+                                $connection = false;
+                                $exists = DB::table('bct_authorized_subjects')
+                                ->where('subject_code',$seven->subject_code)
+                                ->where('teacher_code',$teacher_code)
+                                ->where('batch',$batch);
+                                if($exists->count() == 1){
+                                    $connection = true;
+                                }
                              ?>
 
-                            <grant-button connection="<?= $connection?>" teacher-code="<?= $teacher_code ?>" subject-code="<?= $seven->subject_code ?>"> </grant-button>
+                            <grant-button batch="<?=$batch?>" connection="<?= $connection?>" teacher-code="<?= $teacher_code ?>" subject-code="<?= $seven->subject_code ?>"> </grant-button>
                         </span>
                     </li>
                     @endforeach
@@ -132,10 +190,18 @@ From here admin can grant and revoke permissions to teachers for editing attenda
                         <span>
                             <h5 class="display-inline center pt-2">{{$eight->name}}</h5>
                             <?php
-                            $connection = $teacher->bctSubjects->contains($eight->subject_code);
+                                //check if a connection exists for a particular batch
+                                $connection = false;
+                                $exists = DB::table('bct_authorized_subjects')
+                                ->where('subject_code',$eight->subject_code)
+                                ->where('teacher_code',$teacher_code)
+                                ->where('batch',$batch);
+                                if($exists->count() == 1){
+                                    $connection = true;
+                                }
                              ?>
 
-                            <grant-button connection="<?= $connection?>" teacher-code="<?= $teacher_code ?>" subject-code="<?= $eight->subject_code ?>"> </grant-button>
+                            <grant-button batch="<?=$batch?>" connection="<?= $connection?>" teacher-code="<?= $teacher_code ?>" subject-code="<?= $eight->subject_code ?>"> </grant-button>
                         </span>
                     </li>
                     @endforeach
