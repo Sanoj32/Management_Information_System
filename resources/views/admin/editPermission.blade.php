@@ -9,7 +9,7 @@ From here admin can grant and revoke permissions to teachers for editing attenda
     <div id='app'>
         <div class="row justify-content-center">
             <div class="col-md-9">
-                <h2>Grant or revoke permission to edit attendance for {{$teacher->name}}</h2>
+                <h2>Grant or revoke permission to edit attendance for <span class="font-italic">" {{$teacher->name}} " for {{$batch}}th batch <span></h2>
                 <h3> First Semester</h3>
                 <ul class="list-group pb-3 pt-1">
                     @foreach ($first as $one)
@@ -21,7 +21,7 @@ From here admin can grant and revoke permissions to teachers for editing attenda
                             $connection = $teacher->bctSubjects->contains($one->subject_code);
                              ?>
 
-                            <grant-button connection="<?= $connection?>" teacher-code="<?= $teacher_code ?>" subject-code="<?= $one->subject_code ?>"> </grant-button>
+                            <grant-button batch="<?=$batch?>" connection="<?= $connection?>" teacher-code="<?= $teacher_code ?>" subject-code="<?= $one->subject_code ?>"> </grant-button>
                         </span>
                     </li>
                     @endforeach
@@ -45,7 +45,7 @@ From here admin can grant and revoke permissions to teachers for editing attenda
                     @endforeach
                 </ul>
 
-                <h3> Third Semester</h3>
+                <h3 class="pt-3"> Third Semester</h3>
                 <ul class=" list-group pb-3 pt-1">
                     @foreach ($third as $three)
                     <li class="list-group-item">

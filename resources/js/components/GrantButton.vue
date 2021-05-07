@@ -10,7 +10,7 @@
 
 <script>
 export default {
-    props:['connection','subjectCode','teacherCode']
+    props:['connection','subjectCode','teacherCode','batch']
     ,
     data: function() {
         return {
@@ -26,7 +26,7 @@ export default {
     methods:{
         grant: function(){
             // console.log('Teacher id is '+ this.teacher_code + "subject id is" + this.subject_code)
-            axios.post("/admin/teachers/" + this.teacherCode + "/edit/" + this.subjectCode).then(response => {
+            axios.post("/admin/teachers/" + this.teacherCode + "/edit/" + this.batch + "/" + this.subjectCode).then(response => {
                 this.success = !this.success;
                 this.danger = !this.success;
                 if(this.success == true){

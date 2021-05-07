@@ -21,8 +21,6 @@ class AttendancePermissionController extends Controller
      * This function retuns a view containing a list of all the teachers
      *
      */
-
-
     public function index()
     {
         $teachers = User::all();
@@ -30,14 +28,11 @@ class AttendancePermissionController extends Controller
     }
     public function showProfile($teacher_code)
     {
-
-
-
         $teacher = User::where('teacher_code', $teacher_code)->get()->first();
         $authorizedSubjects = $teacher->bctSubjects;
         return view('teacher.profile', compact('teacher', 'authorizedSubjects'));
     }
-    public function showEditView($teacher_code)
+    public function showEditView($teacher_code, $batch)
     {
         $subjects = BctSubject::all();
         $first = $subjects->where('semester', 1);
@@ -49,11 +44,15 @@ class AttendancePermissionController extends Controller
         $seventh = $subjects->where('semester', 7);
         $eighth = $subjects->where('semester', 8);
         $teacher = User::where('teacher_code', $teacher_code)->first();
-        return view('admin.editPermission', compact('first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'teacher_code', 'teacher'));
+        return view('admin.editPermission', compact('first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'teacher_code', 'teacher', 'batch'));
     }
-    public function changePermission($teacher_code, $subject_code)
+    public function changePermission($teacher_code, $batch, $subject_code)
     {
         $teacher = User::where('teacher_code', $teacher_code)->first();
-        $teacher->bctSubjects()->toggle($subject_code);
+        if ($teacher->bctSubjects->contains($subject_code)) {
+            $teacher->bctSubjects()->detach($subject_code, ['batch' => $batch]);
+        } else {
+            $teacher->bctSubjects()->attach($subject_code, ['batch' => $batch]);
+        }
     }
 }

@@ -10,8 +10,11 @@ class AttendanceController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index()
+    public function home()
     {
-        return view('attendance.dashboard');
+        //get the subjects the authenticated teacher is allowed to teach
+        $teacher = auth()->user();
+        
+        return view('teacher.home', compact('user'));
     }
 }

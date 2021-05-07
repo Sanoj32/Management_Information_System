@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             }
             $subject = new BctSubject();
             $subject['name'] = $data['name'];
-            $subject['subject_code'] = $data['subject_code'];
+            $subject['subject_code'] = $data['subject_code']; 
             $subject['semester'] = $data['semester'];
             $subject->save();
             echo ('NEW SUBJECT ENTRY CREATED!!!!!!!!!!!!!!!');

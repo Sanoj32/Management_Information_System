@@ -23,7 +23,19 @@
                     </ul>
 
                     {{-- LIST THE PERMISSIONS OF A TEACHER HERE. --}}
-                    <a href="/admin/teachers/<?=$teacher->teacher_code?>/edit"><button class="btn btn-dark"> Edit permissions </button> </a>
+                    <div class="py-2">
+                        <span class="pr-2">74th batch</span> <a href="/admin/teachers/<?=$teacher->teacher_code?>/edit/74"><button class="btn btn-dark"> Edit permissions </button> </a>
+                    </div>
+                    <div class="py-2">
+                        <span class="pr-2">75th batch</span> <a href="/admin/teachers/<?=$teacher->teacher_code?>/edit/75"><button class="btn btn-dark"> Edit permissions </button> </a>
+                    </div>
+                    <div class="py-2">
+                        <span class="pr-2">76th batch</span> <a href="/admin/teachers/<?=$teacher->teacher_code?>/edit/76"><button class="btn btn-dark"> Edit permissions </button> </a>
+                    </div>
+                    <div class="py-2">
+                        <span class="pr-2">77th batch</span> <a href="/admin/teachers/<?=$teacher->teacher_code?>/edit/77"><button class="btn btn-dark"> Edit permissions </button> </a>
+                    </div>
+
                 </div>
             </div>
         </div>

@@ -17,6 +17,7 @@ class CreateBctAuthorizedSubjectsTable extends Migration
             $table->id();
             $table->string('teacher_code');
             $table->string('subject_code');
+            $table->string('batch');
 
             $table->foreign('teacher_code')->references('teacher_code')->on('users');
             $table->foreign('subject_code')->references('subject_code')->on('bct_subjects');

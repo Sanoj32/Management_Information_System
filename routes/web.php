@@ -2,6 +2,7 @@
 
 // use Illuminate\Support\Facades\App;
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -40,14 +41,17 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     //Grant various permissions
     Route::get('/teachers', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'index']);
     Route::get('/teachers/{teacher_code}', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'showProfile']);
-    Route::get('/teachers/{teacher_code}/edit', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'showEditView']);
-    Route::post('/teachers/{teacher_code}/edit/{subject_code}', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'changePermission']);
+    Route::get('/teachers/{teacher_code}/edit/{batch}', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'showEditView']);
+
+    Route::post('/teachers/{teacher_code}/edit/{batch}/{subject_code}', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'changePermission']);
 });
 
 Auth::routes();
-
+Route::prefix('/teachers')->name('teacher.')->middleware('auth')->namespace("\App\Http\Controllers\ ")->group(function () {
+    Route::get('/home', [AttendanceController::class, 'home'])->name('home');
+});
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/test', [App\Http\Controllers\WebsiteController::class, 'test']);
+Route::get('/test', [App\Http\Controllers\WebsiteController::class, 'index']);
 Route::get('/vue', [\App\Http\Controllers\WebsiteController::class, 'vue']);
 Route::post('/test', [App\Http\Controllers\WebsiteController::class, 'takeAttendance'])->name('attendance');
 // Route::get('/attendance/bct/{batch}/{subject_code}',[])
