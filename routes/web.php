@@ -47,8 +47,13 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 });
 
 Auth::routes();
-Route::prefix('/teachers')->name('teacher.')->middleware('auth')->namespace("\App\Http\Controllers\ ")->group(function () {
+Route::prefix('/teachers')->name('teacher.')->middleware('auth')->group(function () {
     Route::get('/home', [AttendanceController::class, 'home'])->name('home');
+    Route::get('/attendancedashboard/{batch}/{subject}', [AttendanceController::class, 'index']);
+    Route::get('/attendance/{batch}/{subject}', [AttendanceController::class, 'takeAttendance']);
+
+    // only subject instead of subject_code in above route because type hinting BctSubject inside the controller method takes care of dependency Injection
+
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/test', [App\Http\Controllers\WebsiteController::class, 'index']);

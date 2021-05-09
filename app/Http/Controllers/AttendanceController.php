@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\BctStudent;
+use App\Models\BctSubject;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class AttendanceController extends Controller
 {
@@ -16,11 +16,16 @@ class AttendanceController extends Controller
     {
         //get the subjects the authenticated teacher is allowed to teach
         $teacher = auth()->user();
-        // $teacher_code = $teacher->teacher_code;
-        // $subjects = DB::table('bct_authorized_subjects')->where('teacher_code', $teacher_code)->get();
-        // foreach ($subjects as $sub) {
-        //     echo $sub->batch;
-        // }
+        // $authorizedSubjects = DB::table('bct_authorized_subjects')->where('teacher_code', $teacher->teacher_code)->get();
         return view('teacher.home', compact('teacher'));
+    }
+    public function index($batch, BctSubject $subject)
+    {
+        return view('teacher.attendance_dashboard', compact('subject', 'batch'));
+    }
+    public function takeAttendance($batch, $subject)
+    {
+        $students = BctStudent::where('roll_number');
+        return view('teacher.attendance', compact('subject', 'batch'));
     }
 }

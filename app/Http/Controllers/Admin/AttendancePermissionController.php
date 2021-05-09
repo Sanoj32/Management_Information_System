@@ -33,7 +33,7 @@ class AttendancePermissionController extends Controller
     {
         $teacher = User::where('teacher_code', $teacher_code)->get()->first();
         $authorizedSubjects = DB::table('bct_authorized_subjects')->where('teacher_code', $teacher_code)->get();
-        return view('teacher.profile', compact('teacher', 'authorizedSubjects'));
+        return view('admin.teacher_profile', compact('teacher', 'authorizedSubjects'));
     }
     public function showEditView($teacher_code, $batch)
     {
@@ -47,7 +47,7 @@ class AttendancePermissionController extends Controller
         $seventh = $subjects->where('semester', 7);
         $eighth = $subjects->where('semester', 8);
         $teacher = User::where('teacher_code', $teacher_code)->first();
-        return view('admin.editPermission', compact('first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'teacher_code', 'teacher', 'batch'));
+        return view('admin.edit_permission', compact('first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'teacher_code', 'teacher', 'batch'));
     }
     public function changePermission($teacher_code, $batch, $subject_code)
     {

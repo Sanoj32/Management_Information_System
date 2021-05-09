@@ -19,12 +19,19 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(10)->create();
-        BctStudent::factory()->count(10)->create();
+        User::create([
+            'name' => "Sanoj Raj Shrestha",
+            'password' => Hash::make('password'),
+            'email' => 'sanoj.shrestha.13@gmail.com',
+            'teacher_code' => "11111"
+        ]);
         Admin::firstorCreate([
             'name' => "Sanoj Raj Shrestha",
             'email' => "sanoj.shrestha.13@gmail.com",
             'password' => Hash::make('adminpass'),
         ]);
+
+        //SEED THE SUBJECTS
         $jsondata = json_decode(file_get_contents(storage_path('/json_data/bct_subjects.json')), true);
         $storedSubjects = BctSubject::all(['subject_code']);
         $storedSubArray = array();
@@ -38,11 +45,32 @@ class DatabaseSeeder extends Seeder
             }
             $subject = new BctSubject();
             $subject['name'] = $data['name'];
-            $subject['subject_code'] = $data['subject_code']; 
+            $subject['subject_code'] = $data['subject_code'];
             $subject['semester'] = $data['semester'];
             $subject->save();
             echo ('NEW SUBJECT ENTRY CREATED!!!!!!!!!!!!!!!');
             array_push($storedSubArray, $data['subject_code']);
+        }
+
+        // SEED THE STUDENTS
+        $jsondata = json_decode(file_get_contents(storage_path('/json_data/bct_students.json')), true);
+        $storedStudents = BctStudent::all(['roll_number']);
+        $storedStudentsArray = array();
+        foreach ($storedStudents as $student) {
+            array_push($storedStudentsArray, $student['roll_number']);
+        }
+        foreach ($jsondata as $data) {
+            if (in_array($data['roll_number'], $storedStudentsArray)) {
+                echo "DUPLICATE ENTRY!!!!!!!!!!!!!!!";
+                continue;
+            }
+            $student = new BctStudent();
+            $student['name'] = $data['name'];
+            $student['roll_number'] = $data['roll_number'];
+            $student['group'] = $data['group'];
+            $student->save();
+            echo ('NEW student ENTRY CREATED!!!!!!!!!!!!!!!');
+            array_push($storedStudentsArray, $data['roll_number']);
         }
     }
 }

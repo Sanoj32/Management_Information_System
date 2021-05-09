@@ -15,19 +15,19 @@ use App\Models\BctSubject;
 
 
                 <div class="card-body pb-2">
-                    <h3>{{$teacher->name}} can take attendance of the following subjects.</h3>
+                    <h3>You have been authorized to take attendance of following subjects.</h3>
                     <ul class="list-group pl-3 pb-3">
-                        @foreach ($authorizedSubjects as $subject)
+                        @foreach ($teacher->bctSubjects as $subject)
                         <?php $subName = BctSubject::where('subject_code',$subject->subject_code)->pluck('name');
                         ?>
                         {{-- DISPLAYS SUBJECTS A TEACHER IS PREMITED TO TEACH OR MODIFY ATTENDENCE OF. --}}
                         <span class="pl-2 ">
-                            <li> {{$subject->batch}}th batch <span class="py-2 px-2"> {{$subName[0]}}</span> </li>
+                            <li> {{$subject->pivot->batch}}th batch <span class="py-2 px-2"> {{$subName[0]}}</span> </li>
                         </span>
                         @endforeach
                     </ul>
 
-                    {{-- LIST THE PERMISSIONS OF A TEACHER HERE. --}}
+                    {{-- EDIT THE PERMISSIONS OF A TEACHER HERE. --}}
                     <div class="py-2">
                         <span class="pr-2">74th batch</span> <a href="/admin/teachers/<?=$teacher->teacher_code?>/edit/74"><button class="btn btn-dark"> Edit permissions </button> </a>
                     </div>
@@ -40,7 +40,6 @@ use App\Models\BctSubject;
                     <div class="py-2">
                         <span class="pr-2">77th batch</span> <a href="/admin/teachers/<?=$teacher->teacher_code?>/edit/77"><button class="btn btn-dark"> Edit permissions </button> </a>
                     </div>
-
                 </div>
             </div>
         </div>

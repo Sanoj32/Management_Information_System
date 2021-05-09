@@ -8,6 +8,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
+            <h3></h3>
             <h2>Attendance of BCT</h2>
             <form method="post" enctype="multipart/form-data" action="/test">
                 @csrf
@@ -17,7 +18,10 @@
                     <label for="<?= $student->name ?>" class="checkbox"><span class="text">{{$student->name}}</span><span class="icon"></span></label>
                 </div>
                 @endforeach
-                <button type="submit" class="btn btn-success"> Submit attendance</button>
+                <br>
+                <div class="px-4">
+                    <button type="submit" class="btn btn-success mx-4 float-left"> <span style="font-size: 20px">Submit attendance </span></button>
+                </div>
             </form>
         </div>
     </div>
