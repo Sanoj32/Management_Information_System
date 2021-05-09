@@ -50,7 +50,9 @@ Auth::routes();
 Route::prefix('/teachers')->name('teacher.')->middleware('auth')->group(function () {
     Route::get('/home', [AttendanceController::class, 'home'])->name('home');
     Route::get('/attendancedashboard/{batch}/{subject}', [AttendanceController::class, 'index']);
-    Route::get('/attendance/{batch}/{subject}', [AttendanceController::class, 'takeAttendance']);
+    Route::get('/attendance/{batch}/{subject}/', [AttendanceController::class, 'showAttendanceView']);
+    Route::post('/attendance/{batch}/{subject}/{day}', [AttendanceController::class, 'recordAttendance'])->name('recordAttendance');
+
 
     // only subject instead of subject_code in above route because type hinting BctSubject inside the controller method takes care of dependency Injection
 

@@ -63,15 +63,8 @@ body {
   color: #212529;
   text-align: left;
   background-color: #f8fafc;
-
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
-footer{
-  margin-top: auto;
-}
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
 }

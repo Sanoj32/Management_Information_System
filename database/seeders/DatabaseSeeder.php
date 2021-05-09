@@ -64,10 +64,13 @@ class DatabaseSeeder extends Seeder
                 echo "DUPLICATE ENTRY!!!!!!!!!!!!!!!";
                 continue;
             }
+            $batch = explode('0', $data['roll_number'])[1];
+            $batch = explode('B', $batch)[0];
             $student = new BctStudent();
             $student['name'] = $data['name'];
             $student['roll_number'] = $data['roll_number'];
             $student['group'] = $data['group'];
+            $student['batch'] = $batch;
             $student->save();
             echo ('NEW student ENTRY CREATED!!!!!!!!!!!!!!!');
             array_push($storedStudentsArray, $data['roll_number']);

@@ -1,6 +1,5 @@
 <footer>
-    <!-- <button class="scrollToTopBtn">🔺</button> -->
-    <button onclick="topFunction()" id="myBtn" title="Go to top">🔺</button>
+
     <hr class="downside">
     <div class="site-footer">
         <div class="container">
