@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700");
-
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,400i,700);
 :root {
   --primary: #C5E1A5;
   --easing: cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -39,7 +38,10 @@ body {
 .text {
   display: inline-block;
   transition: transform var(--duration) var(--easing);
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .checkbox:active .text {

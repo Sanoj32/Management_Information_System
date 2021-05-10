@@ -28,7 +28,7 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view('auth.login', [
-            'title'               => 'Admin Login',
+            'title'               => 'Admin login',
             'loginRoute'          => 'admin.login',
             'forgotPasswordRoute' => 'admin.password.request',
         ]);
@@ -79,7 +79,7 @@ class LoginController extends Controller
     {
         //logout the admin...
         Auth::guard('admin')->logout();
-        
+
         return redirect()
             ->route('admin.login')
             ->with('status', 'Admin has been logged out!');
@@ -96,7 +96,7 @@ class LoginController extends Controller
         //validation rules.
         $rules = [
             'email'    => 'required|email|exists:admins|min:5|max:191',
-            'password' => 'required|string|min:4|max:255',
+            'password' => 'required|string|min:8|max:255',
         ];
 
         //custom validation error messages.

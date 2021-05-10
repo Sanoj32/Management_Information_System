@@ -18,6 +18,7 @@ class CreateBctStudentsTable extends Migration
             $table->string('name');
             $table->string('group')->nullable();
             $table->string('roll_number')->unique();
+            $table->tinyText('roll');
             $table->string('batch');
             $table->timestamps();
         });

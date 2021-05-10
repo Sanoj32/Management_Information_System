@@ -32,7 +32,8 @@ class AttendanceController extends Controller
         } else {
             $day = 1;
         }
-        return view('teacher.attendance_dashboard', compact('subject', 'batch', 'day'));
+        $students = BctStudent::where('batch', $batch)->get();
+        return view('teacher.attendance_dashboard', compact('subject', 'batch', 'day', 'students', 'previousAttendances'));
     }
     public function showAttendanceView($batch, BctSubject $subject)
     {
@@ -62,11 +63,12 @@ class AttendanceController extends Controller
             $bctAttendance->subject_code = $subject->subject_code;
             $bctAttendance->day = $day;
             if (in_array($student->roll_number, $presentStudents)) {
-                $bctAttendance->attendance = "Present";
+                $bctAttendance->attendance = "P";
             } else {
-                $bctAttendance->attendance = "Absent";
+                $bctAttendance->attendance = "A";
             }
             $bctAttendance->save();
         }
+        return redirect('/teachers/attendancedashboard/' . $batch . '/' . $subject->subject_code);
     }
 }

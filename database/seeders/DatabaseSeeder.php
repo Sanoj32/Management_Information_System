@@ -71,6 +71,7 @@ class DatabaseSeeder extends Seeder
             $student['roll_number'] = $data['roll_number'];
             $student['group'] = $data['group'];
             $student['batch'] = $batch;
+            $student['roll'] = substr($data['roll_number'], -2);
             $student->save();
             echo ('NEW student ENTRY CREATED!!!!!!!!!!!!!!!');
             array_push($storedStudentsArray, $data['roll_number']);

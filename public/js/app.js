@@ -378,6 +378,28 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 
 /***/ }),
 
+/***/ "./resources/css/checkbox.css":
+/*!************************************!*\
+  !*** ./resources/css/checkbox.css ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvY3NzL2NoZWNrYm94LmNzcz82ZGViIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSIsImZpbGUiOiIuL3Jlc291cmNlcy9jc3MvY2hlY2tib3guY3NzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiLy8gZXh0cmFjdGVkIGJ5IG1pbmktY3NzLWV4dHJhY3QtcGx1Z2luXG5leHBvcnQge307Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/css/checkbox.css\n");
+
+/***/ }),
+
+/***/ "./resources/css/footer.css":
+/*!**********************************!*\
+  !*** ./resources/css/footer.css ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvY3NzL2Zvb3Rlci5jc3M/ODZlNyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEiLCJmaWxlIjoiLi9yZXNvdXJjZXMvY3NzL2Zvb3Rlci5jc3MuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvLyBleHRyYWN0ZWQgYnkgbWluaS1jc3MtZXh0cmFjdC1wbHVnaW5cbmV4cG9ydCB7fTsiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/css/footer.css\n");
+
+/***/ }),
+
 /***/ "./node_modules/popper.js/dist/esm/popper.js":
 /*!***************************************************!*\
   !*** ./node_modules/popper.js/dist/esm/popper.js ***!
@@ -605,7 +627,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
-/******/ 			"css/app": 0
+/******/ 			"css/checkbox": 0,
+/******/ 			"css/app": 0,
+/******/ 			"css/footer": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -653,8 +677,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/checkbox","css/app","css/footer"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/checkbox","css/app","css/footer"], () => (__webpack_require__("./resources/sass/app.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/checkbox","css/app","css/footer"], () => (__webpack_require__("./resources/css/checkbox.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/checkbox","css/app","css/footer"], () => (__webpack_require__("./resources/css/footer.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

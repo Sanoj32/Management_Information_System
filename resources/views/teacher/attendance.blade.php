@@ -2,6 +2,7 @@
 
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/checkbox.css') }}">
 
 <div class="container">
     <div class="row">
