@@ -6,6 +6,7 @@ use App\Models\BctAttendance;
 use App\Models\BctStudent;
 use App\Models\BctSubject;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AttendanceController extends Controller
 {
@@ -22,6 +23,7 @@ class AttendanceController extends Controller
     }
     public function index($batch, BctSubject $subject)
     {
+        $dateNow = Carbon::now('Asia/Kathmandu');
         // get the current day of the attendance
         $previousAttendances = BctAttendance::where('subject_code', $subject->subject_code)
             ->where('batch', $batch)
@@ -34,10 +36,11 @@ class AttendanceController extends Controller
             $day = 1;
         }
         $students = BctStudent::where('batch', $batch)->get();
-        return view('teacher.attendance_dashboard', compact('subject', 'batch', 'day', 'students', 'previousAttendances'));
+        return view('teacher.attendance_dashboard', compact('subject', 'batch', 'day', 'students', 'previousAttendances', 'dateNow'));
     }
     public function showAttendanceView($batch, BctSubject $subject)
     {
+
         $previousAttendances = BctAttendance::where('subject_code', $subject->subject_code)
             ->where('batch', $batch)
             ->get();
@@ -72,7 +75,7 @@ class AttendanceController extends Controller
         }
         return redirect('/teachers/attendancedashboard/' . $batch . '/' . $subject->subject_code);
     }
-    public function editAttendance(){
-        
+    public function editAttendance()
+    {
     }
 }

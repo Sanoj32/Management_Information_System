@@ -3,6 +3,10 @@
 @section('content')
 
 <?php
+use Krishnahimself\DateConverter\DateConverter;
+$nepaliDate = DateConverter::fromEnglishDate($dateNow->year, $dateNow->month, $dateNow->day)->toNepaliDate();
+
+
 $noOfDays = $day - 1;
     ?>
 <link rel="stylesheet" href="{{asset('css/attendance_table.css')}}">
@@ -10,14 +14,15 @@ $noOfDays = $day - 1;
     <div class="row">
         <div class="col-md-8">
             <h2>{{$subject->name}} </h2>
-            <h2 class="pb-2">{{$batch}}th batch | Day {{$day}}</h2>
+            <h2>{{$batch}}th batch | Day {{$day}}</h2>
+            <h3 class="pb-2"><?php echo getNameOfDay($dateNow->dayOfWeek) ?> :- {{$nepaliDate}}</h3>
             <h2><a href="/teachers/attendance/<?=$batch?>/<?=$subject->subject_code?>/"><button class="btn btn-success mb-3 px-3"> Take today's attendance. </button></a> </h2>
-            <h2><a href="/teachers/attendance/<?=$batch?>/<?=$subject->subject_code?>/edit"><button class="btn btn-dark mb-3 px-3"> Edit today's attendance. </button></a> </h2>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="page-TimeShifts page-BgGray js-TimeShifts ml-3">
+            <h2>Attendance History</h2>
+            <div class="page-TimeShifts page-BgGray js-TimeShifts">
                 <div class="TShifts " style="overflow-x:auto;">
                     <table class="TShifts__table">
                         <thead>
@@ -40,7 +45,7 @@ $noOfDays = $day - 1;
                                 <td> {{$student->name}} </td>
                                 <?php for($i = 1; $i < $day; $i++){ ?>
                                 <td class="">
-                                    <?php 
+                                    <?php
                                 $attendance = $previousAttendances->where('roll_number',$student->roll_number)
                                 ->where('day',$i)
                                 ->pluck('attendance')[0];
