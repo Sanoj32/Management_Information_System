@@ -1,6 +1,4 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/checkbox.css": "/css/checkbox.css",
-    "/css/app.css": "/css/app.css",
-    "/css/footer.css": "/css/footer.css"
+    "/css/app.css": "/css/app.css"
 }

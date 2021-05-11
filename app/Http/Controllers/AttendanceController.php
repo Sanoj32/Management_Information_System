@@ -29,6 +29,7 @@ class AttendanceController extends Controller
         if ($previousAttendances->isNotEmpty()) {
             $prev = $previousAttendances->sortByDesc('created_at')->first();
             $day = $prev->day + 1;
+            $date = $prev->created_at;
         } else {
             $day = 1;
         }
@@ -70,5 +71,8 @@ class AttendanceController extends Controller
             $bctAttendance->save();
         }
         return redirect('/teachers/attendancedashboard/' . $batch . '/' . $subject->subject_code);
+    }
+    public function editAttendance(){
+        
     }
 }

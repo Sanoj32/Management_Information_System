@@ -16,7 +16,6 @@ From here admin can grant and revoke permissions to teachers for editing attenda
                 <ul class="list-group pb-3 pt-1">
                     @foreach ($first as $one)
                     <li class="list-group-item">
-
                         <span>
                             <h5 class="display-inline center pt-2">{{$one->name}}</h5>
                             <?php
@@ -30,7 +29,6 @@ From here admin can grant and revoke permissions to teachers for editing attenda
                                     $connection = true;
                                 }
                              ?>
-
                             <grant-button batch="<?=$batch?>" connection="<?= $connection?>" teacher-code="<?= $teacher_code ?>" subject-code="<?= $one->subject_code ?>"> </grant-button>
                         </span>
                     </li>

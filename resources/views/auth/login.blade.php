@@ -56,8 +56,15 @@
                                 </a>
                                 @endif
                             </div>
+
                         </div>
                     </form>
+                    @if($title == "Admin login")
+                    <div style="text-align:center; " class="justify-content-center text text-center pt-5">
+                        <span>This page is for Admins only. For Teachers visit <a href="/login"> Teacher's login page. </a></span>
+
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

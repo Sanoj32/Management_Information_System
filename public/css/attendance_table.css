@@ -2,10 +2,10 @@
     background: #dfe3e4;
 }
 .page-TimeShifts {
-    padding: 10px 0;
+    padding: 0px 0;
 }
 .TShifts__table {
-    width: 100%;
+    width: 100vmax;
 }
 
 app.css:868
@@ -28,6 +28,7 @@ app.css:868
 .TShifts__table tbody tr td {
     border-left: 1px solid #bec6c8;
     border-bottom: 1px solid #bec6c8;
+	border-right: 1px solid  #bec6c8;;
     max-width: 4%;
     cursor: pointer;
 }

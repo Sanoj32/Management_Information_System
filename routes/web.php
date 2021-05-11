@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware(['guest', 'guest:admin']);
 Route::prefix('/admin')->name('admin.')->group(function () {
 
     //Login Routes

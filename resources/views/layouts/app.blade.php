@@ -41,7 +41,11 @@
 <body>
 
     @include('inc.navbar')
-    <main class="container mt-4">
+
+    <main class="container mt-2">
+        <hr>
+        <div class="pb-4"></div>
+
         @yield('content')
     </main>
 
