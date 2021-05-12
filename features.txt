@@ -59,6 +59,7 @@ REFORMATIING THE CODE
 4 DELETE ADMIN FACTORY AND FORM A USER THROUGH TINKER
 5 TRY DELETING THE MANY TO MANY RELATIONSHIP THROUGH DETACH THAN DELETE
 6 ADD A DISABLE ACCOUNT FEATURE FOR STUDENTS WHO LEAVE COLLEGE
+7 Make the roll numbers stick and give it a nice background
 ////////////////////////
 SOME NOTES
 Adding typed boolean props on vue somehow always returns true search for that

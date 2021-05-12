@@ -26,13 +26,22 @@ $noOfDays = $day - 1;
                 <div class="TShifts " style="overflow-x:auto;">
                     <table class="TShifts__table">
                         <thead>
-                            <th class="Month border-white border-right px-1" style="min-width:3px max-width:5px">Roll</th>
+                            <th class="Month border-white border-right px-1 " style="min-width:3px max-width:5px">Roll</th>
+
                             <th class="Month border-white border-right" style=" min-width:10px; max-width:15px;">
                                 Name
                             </th>
-                            <?php for($i = 1; $i < $day; $i++){ ?>
+                            <?php for($i = 1; $i < $day; $i++){
+                                $thisAttendance =  $previousAttendances->where('day',$i)->first();
+                                $attendanceDate = $thisAttendance->created_at;
+                                $nepaliDate = DateConverter::fromEnglishDate($thisAttendance->created_at->year, $thisAttendance->created_at->month, $thisAttendance->created_at->day)->toNepaliDate();
+                                $nepaliMonth = explode('-',$nepaliDate,3)[1];
+                                $nepaliDay = explode('-',$nepaliDate,3)[2];
+                                 ?>
 
-                            <th class="border-white border-right px-1" style="min-width: 2px"> <small>Day </small><?= $i ?></th>
+                            <th class="border-white border-right px-1" style="min-width: 2px"> <small>D </small><?= $i ?>
+                                <div>{{$nepaliMonth}}|{{$nepaliDay}}</div>
+                            </th>
                             <?php } ?>
                         </thead>
                         <tbody id="drawWorkTimeTableBody">
@@ -42,6 +51,7 @@ $noOfDays = $day - 1;
 
                             <tr style="text-align:center;">
                                 <td><span class="text-bold font-weight-bolder">{{$student->roll}} </span></td>
+
                                 <td> {{$student->name}} </td>
                                 <?php for($i = 1; $i < $day; $i++){ ?>
                                 <td class="">
