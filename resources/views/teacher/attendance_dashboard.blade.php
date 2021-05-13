@@ -8,15 +8,31 @@ $nepaliDate = DateConverter::fromEnglishDate($dateNow->year, $dateNow->month, $d
 
 
 $noOfDays = $day - 1;
+$lastDay = $noOfDays;
     ?>
 <link rel="stylesheet" href="{{asset('css/attendance_table.css')}}">
 <div class="container">
     <div class="row">
+        @if (session('attendanceSuccess'))
+        <div class="alert alert-success">
+            {{ session('attendanceSuccess') }}
+        </div>
+        @endif
+        @if (session('attendanceUpdateSuccess'))
+        <div class="alert alert-success">
+            {{ session('attendanceUpdateSuccess') }}
+        </div>
+        @endif
         <div class="col-md-8">
             <h2>{{$subject->name}} </h2>
             <h2>{{$batch}}th batch | Day {{$day}}</h2>
             <h3 class="pb-2"><?php echo getNameOfDay($dateNow->dayOfWeek) ?> :- {{$nepaliDate}}</h3>
             <h2><a href="/teachers/attendance/<?=$batch?>/<?=$subject->subject_code?>/"><button class="btn btn-success mb-3 px-3"> Take today's attendance. </button></a> </h2>
+            @if($previousAttendances->isNotEmpty() )
+            <h2><a href="/teachers/attendance/<?=$batch?>/<?=$subject->subject_code?>/<?=$lastDay; ?>/edit"><button class="btn btn-secondary mb-3 px-3"> Edit Today's attendance. </button></a> </h2>
+            @endif
+
+
         </div>
     </div>
     <div class="row">

@@ -13,7 +13,7 @@ From here admin can grant and revoke permissions to teachers for editing attenda
                 </h2>
                 <hr>
                 <h3> First Semester</h3>
-                <ul class="list-group pb-3 pt-1">
+                <ul class="list-group p\b-3 pt-1">
                     @foreach ($first as $one)
                     <li class="list-group-item">
                         <span>

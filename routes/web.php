@@ -52,14 +52,17 @@ Route::prefix('/teachers')->name('teacher.')->middleware('auth')->group(function
     Route::get('/attendancedashboard/{batch}/{subject}', [AttendanceController::class, 'index']);
     Route::get('/attendance/{batch}/{subject}/', [AttendanceController::class, 'showAttendanceView']);
     Route::post('/attendance/{batch}/{subject}/{day}', [AttendanceController::class, 'recordAttendance'])->name('recordAttendance');
+    Route::get('/attendance/{batch}/{subject}/{lastDay}/edit', [AttendanceController::class, 'showUpdateView']);
+    Route::patch('/attendance/{batch}/{subject}/{lastDay}', [AttendanceController::class, 'updateAttendance']);
+
 
 
     // only subject instead of subject_code in above route because type hinting BctSubject inside the controller method takes care of dependency Injection
 
 });
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/test', [App\Http\Controllers\WebsiteController::class, 'index']);
-Route::get('/vue', [\App\Http\Controllers\WebsiteController::class, 'vue']);
-Route::post('/test', [App\Http\Controllers\WebsiteController::class, 'takeAttendance'])->name('attendance');
-// Route::get('/attendance/bct/{batch}/{subject_code}',[])
-Route::get('/home', [App\Http\Controllers\AttendanceController::class, 'index'])->name('home');  // this is where the teachers land after loggin in.
+// // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/test', [App\Http\Controllers\WebsiteController::class, 'index']);
+// Route::get('/vue', [\App\Http\Controllers\WebsiteController::class, 'vue']);
+// Route::post('/test', [App\Http\Controllers\WebsiteController::class, 'takeAttendance'])->name('attendance');
+// // Route::get('/attendance/bct/{batch}/{subject_code}',[])
+// Route::get('/home', [App\Http\Controllers\AttendanceController::class, 'index'])->name('home');  // this is where the teachers land after loggin in.

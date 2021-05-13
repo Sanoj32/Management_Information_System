@@ -7,6 +7,8 @@ use App\Models\BctStudent;
 use App\Models\BctSubject;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Krishnahimself\DateConverter\DateConverter;
+
 
 class AttendanceController extends Controller
 {
@@ -23,8 +25,9 @@ class AttendanceController extends Controller
     }
     public function index($batch, BctSubject $subject)
     {
+        // dd($attendanceStatus);
         $dateNow = Carbon::now('Asia/Kathmandu');
-        // get the current day of the attendance
+        // get the current day of the attec  dance
         $previousAttendances = BctAttendance::where('subject_code', $subject->subject_code)
             ->where('batch', $batch)
             ->get();
@@ -36,11 +39,13 @@ class AttendanceController extends Controller
             $day = 1;
         }
         $students = BctStudent::where('batch', $batch)->get();
-        return view('teacher.attendance_dashboard', compact('subject', 'batch', 'day', 'students', 'previousAttendances', 'dateNow'));
+        return view('teacher.attendance_dashboard', compact('subject', 'batch', 'day', 'students', 'previousAttendances', 'dateNow'))->with('attendanceSuccess', session('attendanceSuccess'));
     }
     public function showAttendanceView($batch, BctSubject $subject)
     {
-
+        $dateNow = Carbon::now('Asia/Kathmandu');
+        $nameOfDay = getNameOfDay($dateNow->dayOfWeek);
+        $nepaliDate = DateConverter::fromEnglishDate($dateNow->year, $dateNow->month, $dateNow->day)->toNepaliDate();
         $previousAttendances = BctAttendance::where('subject_code', $subject->subject_code)
             ->where('batch', $batch)
             ->get();
@@ -52,11 +57,15 @@ class AttendanceController extends Controller
         }
         $students = BctStudent::where('batch', $batch)->get();
 
-        return view('teacher.attendance', compact('subject', 'batch', 'students', 'day'));
+        return view('teacher.attendance', compact('subject', 'batch', 'students', 'day', 'nepaliDate', 'nameOfDay'));
     }
     // This method is responsibe for adding attendance data to the database
     public function recordAttendance($batch, BctSubject $subject, $day)
     {
+        if (empty(request()->attendance)) {
+            return back()->with('attendanceSuccess', 'Attendance can not be empty! Atleast one student must be present.');
+        }
+
         $students = BctStudent::where('batch', $batch)->get();
         $presentStudents = request()->attendance;
         foreach ($students as $student) {
@@ -73,9 +82,42 @@ class AttendanceController extends Controller
             }
             $bctAttendance->save();
         }
-        return redirect('/teachers/attendancedashboard/' . $batch . '/' . $subject->subject_code);
+        return redirect('/teachers/attendancedashboard/' . $batch . '/' . $subject->subject_code)->with('attendanceSuccess', 'Attendance Recorded Succesfully.');
     }
-    public function editAttendance()
+    // variable lastDay meaning the day of latest attendance taken
+    public function showUpdateView($batch, BctSubject $subject, $lastDay)
     {
+        $students = BctStudent::where('batch', $batch)->get();
+        $previousAttendance = BctAttendance::where('subject_code', $subject->subject_code)
+            ->where('batch', $batch)
+            ->where('day', $lastDay)
+            ->get();
+        $prev = $previousAttendance->first();
+        $date = $prev->created_at;
+        $day = $prev->day;
+        $nepaliDate = DateConverter::fromEnglishDate($date->year, $date->month, $date->day)->toNepaliDate();
+
+
+        return view('teacher.edit_attendance', compact('subject', 'batch', 'students', 'previousAttendance', 'lastDay', 'nepaliDate', 'day'));
+    }
+    public function updateAttendance($batch, BctSubject $subject, $lastDay, Request $request)
+    {
+        $updatedPresentStudents = $request->attendance;
+        if (empty($updatedPresentStudents)) {
+            return back()->with('attendanceUpdateFailed', "Atleast one student must be present.");
+        }
+        $previousAttendance = BctAttendance::where('subject_code', $subject->subject_code)
+            ->where('batch', $batch)
+            ->where('day', $lastDay)
+            ->get();
+        foreach ($previousAttendance as $prev) {
+            if (in_array($prev->roll_number, $updatedPresentStudents)) {
+                $prev->attendance = "P";
+            } else {
+                $prev->attendance = "A";
+            }
+            $prev->save();
+        }
+        return redirect('/teachers/attendancedashboard/' . $batch . '/' . $subject->subject_code)->with('attendanceUpdateSuccess', "Attendance Updated Successfully.");
     }
 }
