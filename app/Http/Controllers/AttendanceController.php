@@ -63,7 +63,7 @@ class AttendanceController extends Controller
     public function recordAttendance($batch, BctSubject $subject, $day)
     {
         if (empty(request()->attendance)) {
-            return back()->with('attendanceSuccess', 'Attendance can not be empty! Atleast one student must be present.');
+            return back()->with('attendanceFailed', 'Attendance can not be empty! Atleast one student must be present.');
         }
 
         $students = BctStudent::where('batch', $batch)->get();

@@ -18,6 +18,7 @@ $lastDay = $noOfDays;
             {{ session('attendanceSuccess') }}
         </div>
         @endif
+
         @if (session('attendanceUpdateSuccess'))
         <div class="alert alert-success">
             {{ session('attendanceUpdateSuccess') }}
@@ -47,9 +48,23 @@ $lastDay = $noOfDays;
                             <th class="Month border-white border-right" style=" min-width:10px; max-width:15px;">
                                 Name
                             </th>
-                            <?php for($i = 1; $i < $day; $i++){
-                                $thisAttendance =  $previousAttendances->where('day',$i)->first();
-                                $attendanceDate = $thisAttendance->created_at;
+                            {{-- Display the latest attendance in this first column --}}
+                            <th class="border-white border-right px-1" style="min-width: 2px"><?= $day - 1 ?>
+                                <?php 
+                            $thisAttendance =  $previousAttendances->where('day',$day - 1)->first(); // Get the attendance of this specific column
+                                $attendanceDate = $thisAttendance->created_at; 
+                                $nepaliDate = DateConverter::fromEnglishDate($thisAttendance->created_at->year, $thisAttendance->created_at->month, $thisAttendance->created_at->day)->toNepaliDate();
+                                $nepaliMonth = explode('-',$nepaliDate,3)[1];
+                                $nepaliDay = explode('-',$nepaliDate,3)[2];
+                            ?>
+                                <div>{{$nepaliMonth}}|{{$nepaliDay}}</div>
+                            </th>
+
+                            {{-- Calculate Nepali day of the date of attendance history
+                            And this is the column loop --}}
+                            <?php for($i = 1; $i < $day - 1; $i++){
+                                $thisAttendance =  $previousAttendances->where('day',$i)->first(); // Get the attendance of this specific column
+                                $attendanceDate = $thisAttendance->created_at; 
                                 $nepaliDate = DateConverter::fromEnglishDate($thisAttendance->created_at->year, $thisAttendance->created_at->month, $thisAttendance->created_at->day)->toNepaliDate();
                                 $nepaliMonth = explode('-',$nepaliDate,3)[1];
                                 $nepaliDay = explode('-',$nepaliDate,3)[2];
@@ -62,14 +77,30 @@ $lastDay = $noOfDays;
                         </thead>
                         <tbody id="drawWorkTimeTableBody">
 
-
+                            {{-- This is the row loop --}}
                             @foreach ($students as $student)
 
                             <tr style="text-align:center;">
                                 <td><span class="text-bold font-weight-bolder">{{$student->roll}} </span></td>
 
                                 <td> {{$student->name}} </td>
-                                <?php for($i = 1; $i < $day; $i++){ ?>
+
+                                {{-- Display the latest attendance taken in the first column as P and A --}}
+                                <td class="">
+                                    <?php
+                                $attendance = $previousAttendances->where('roll_number',$student->roll_number)
+                                ->where('day',$day - 1)
+                                ->pluck('attendance')[0];
+                                ?>
+                                    @if($attendance == "P")
+                                    {{$attendance}}
+                                    @else
+                                    <span class="text text-danger">{{$attendance}} </span>
+                                    @endif
+
+
+                                </td>
+                                <?php for($i = 1; $i < $day - 1; $i++){ ?>
                                 <td class="">
                                     <?php
                                 $attendance = $previousAttendances->where('roll_number',$student->roll_number)

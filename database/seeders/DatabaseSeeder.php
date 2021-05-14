@@ -25,10 +25,21 @@ class DatabaseSeeder extends Seeder
             'email' => 'sanoj.shrestha.13@gmail.com',
             'teacher_code' => "11111"
         ]);
+        User::create([
+            'name' => "Praches Acharya",
+            'password' => Hash::make('zxcvbnm,./'),
+            'email' => 'praches@gmail.com',
+            'teacher_code' => "22222"
+        ]);
         Admin::firstorCreate([
             'name' => "Sanoj Raj Shrestha",
             'email' => "sanoj.shrestha.13@gmail.com",
             'password' => Hash::make('adminpass'),
+        ]);
+        Admin::firstorCreate([
+            'name' => "Praches Acharya",
+            'email' => "praches@gmail.com",
+            'password' => Hash::make('zxcvbnm,./'),
         ]);
 
         //SEED THE SUBJECTS
@@ -40,7 +51,7 @@ class DatabaseSeeder extends Seeder
         }
         foreach ($jsondata as $data) {
             if (in_array($data['subject_code'], $storedSubArray)) {
-                echo "DUPLICATE ENTRY!!!!!!!!!!!!!!!";
+                echo "DUPLICATE ENTRY!";
                 continue;
             }
             $subject = new BctSubject();
@@ -48,7 +59,7 @@ class DatabaseSeeder extends Seeder
             $subject['subject_code'] = $data['subject_code'];
             $subject['semester'] = $data['semester'];
             $subject->save();
-            echo ('NEW SUBJECT ENTRY CREATED!!!!!!!!!!!!!!!');
+            echo ('NEW SUBJECT ENTRY CREATED!');
             array_push($storedSubArray, $data['subject_code']);
         }
 
@@ -73,7 +84,7 @@ class DatabaseSeeder extends Seeder
             $student['batch'] = $batch;
             $student['roll'] = substr($data['roll_number'], -2);
             $student->save();
-            echo ('NEW student ENTRY CREATED!!!!!!!!!!!!!!!');
+            echo ('NEW student ENTRY CREATED!');
             array_push($storedStudentsArray, $data['roll_number']);
         }
     }

@@ -18,7 +18,7 @@ app.css:868
     padding: 10px 0;
     text-align: center;
     color: #fff;
-    width: 4%;
+    width: 4%;\
 }
 .TShifts__table tbody tr td:first-child {
     width: 20px !important;

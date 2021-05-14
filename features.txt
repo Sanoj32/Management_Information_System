@@ -50,6 +50,9 @@ Route::get('email/resend', 'Auth\VerificationController@resend')->name('verifica
 
 
 
+////////////////////BUGS//////////////
+SESSION ALERT SHOW UP WHEN BACKING FROM A PAGE THAN ONLY ON HITTING THE SUBMIT BUTTON
+POSSIBLE FIX => TRY DELETING SESSION DATA AFTER DISPLAYING THE ALERT
 
 ///////////////////
 REFORMATIING THE CODE
@@ -61,7 +64,20 @@ REFORMATIING THE CODE
 6 ADD A DISABLE ACCOUNT FEATURE FOR STUDENTS WHO LEAVE COLLEGE !!!!!
 7 Make the roll numbers stick and give it a nice background !!!!!!!!!
 9 ADD A CHECK ALL FEATURE SO THAT ALL ARE PRESENT !!!!!!!!!!!!
+Make Todays attendance the first column after name so no scrolling to see the latest attendance.
 
 ////////////////////////
-DONE 
-1 Design so that the click can be registered even outsite of the name
+
+1 Design so that the click can be registered even outsite of the name DONE
+Attendance sum column
+Average present percent per subject
+Average present percent per semester
+Present percent per student
+Present percent graph for admin..
+Bar graph comparing attendance of different subjects per student.
+Marking system.
+Teacher should be allowed to enter marks for each students.
+New tab for internal marking system.
+All student's all subjects report card.
+OTP for teachers for initial registration.
+

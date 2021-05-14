@@ -5,12 +5,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            @if (session('attendanceFaliure'))
+            @if(session('attendanceFailed'))
             <div class="alert alert-danger">
-                {{ session('attendanceSuccess') }}
+                {{ session('attendanceFailed') }}
             </div>
             @endif
-            
+
             <div class="float-right">
                 {{$nepaliDate}}
                 <div>{{$nameOfDay}}
