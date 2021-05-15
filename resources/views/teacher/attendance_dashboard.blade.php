@@ -30,7 +30,7 @@ $totalClasses = $previousAttendances->count() / $students->count();
             <h2>{{$subject->name}} </h2>
             <h2>{{$batch}}th batch | Day {{$day}}</h2>
             <h3 class="pb-2"><?php echo getNameOfDay($dateNow->dayOfWeek) ?> :- {{$nepaliDateToday}}</h3>
-            <h2><a href="/teachers/attendance/<?=$batch?>/<?=$subject->subject_code?>/"><button class="btn btn-success mb-3 px-3"> Take today's attendance. </button></a> </h2>
+            <h2><a href="/teachers/attendance/<?=$batch?>/<?=$subject->subject_code?>/<?=$day?>"><button class="btn btn-success mb-3 px-3"> Take today's attendance. </button></a> </h2>
             @if($previousAttendances->isNotEmpty() )
             <h2><a href="/teachers/attendance/<?=$batch?>/<?=$subject->subject_code?>/<?=$lastDay; ?>/edit"><button class="btn btn-secondary mb-3 px-3"> Edit Today's attendance. </button></a> </h2>
             @endif

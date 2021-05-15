@@ -41,7 +41,7 @@ class AttendanceController extends Controller
         $students = BctStudent::where('batch', $batch)->get();
         return view('teacher.attendance_dashboard', compact('subject', 'batch', 'day', 'students', 'previousAttendances', 'dateNow'))->with('attendanceSuccess', session('attendanceSuccess'));
     }
-    public function showAttendanceView($batch, BctSubject $subject)
+    public function showAttendanceView($batch, BctSubject $subject, $day)
     {
         $dateNow = Carbon::now('Asia/Kathmandu');
         $nameOfDay = getNameOfDay($dateNow->dayOfWeek);
@@ -49,12 +49,6 @@ class AttendanceController extends Controller
         $previousAttendances = BctAttendance::where('subject_code', $subject->subject_code)
             ->where('batch', $batch)
             ->get();
-        if ($previousAttendances->isNotEmpty()) {
-            $prev = $previousAttendances->sortByDesc('created_at')->first();
-            $day = $prev->day + 1;
-        } else {
-            $day = 1;
-        }
         $students = BctStudent::where('batch', $batch)->get();
 
         return view('teacher.attendance', compact('subject', 'batch', 'students', 'day', 'nepaliDate', 'nameOfDay'));
@@ -73,7 +67,7 @@ class AttendanceController extends Controller
             $bctAttendance->roll_number = $student->roll_number;
             $bctAttendance->teacher_code = auth()->user()->teacher_code;
             $bctAttendance->batch = $batch;
-            $bctAttendance->subject_code = $subject->subject_code;
+            $bctAttendance->subject_code =  $subject->subject_code;
             $bctAttendance->day = $day;
             if (in_array($student->roll_number, $presentStudents)) {
                 $bctAttendance->attendance = "P";
