@@ -25,7 +25,7 @@ class EnsureTeacherIsAuthorized
         if (in_array($request->subject->subject_code, $validSubjectCodes)) {
             return $next($request);
         } else {
-            return redirect('/teachers/home')->with('unAuthorizedSubject', 'You are not authorized to edit this subject');
+            return redirect('/teachers/home')->with('unAuthorizedSubject', 'You are not authorized to edit attendance of ' . $request->subject->name);
         }
     }
 }

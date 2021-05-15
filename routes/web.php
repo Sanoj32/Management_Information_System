@@ -46,7 +46,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/teachers/{teacher_code}', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'showProfile']);
     Route::get('/teachers/{teacher_code}/edit/{batch}', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'showEditView']);
 
-    Route::post('/teachers/{teacher_code}/edit/{batch}/{subject_code}', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'changePermission']);
+Route::post('/teachers/{teacher_code}/edit/{batch}/{subject_code}', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'changePermission']);
 });
 
 Auth::routes();
@@ -64,6 +64,9 @@ Route::prefix('/teachers')->name('teacher.')->middleware('auth')->group(function
 
     // only subject instead of subject_code in above route because type hinting BctSubject inside the controller method takes care of dependency Injection
 
+});
+Route::get('/suspended', function () {
+    return view('suspended');
 });
 // // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/test', [App\Http\Controllers\WebsiteController::class, 'index']);

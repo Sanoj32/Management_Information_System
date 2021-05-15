@@ -20,6 +20,7 @@ class CreateBctStudentsTable extends Migration
             $table->string('roll_number')->unique();
             $table->tinyText('roll');
             $table->string('batch');
+            $table->boolean('is_suspended');
             $table->timestamps();
         });
     }

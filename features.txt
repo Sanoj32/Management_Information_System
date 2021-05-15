@@ -61,12 +61,14 @@ REFORMATIING THE CODE
 3  ADD NECESSARY COMMENTS
 4 DELETE ADMIN FACTORY AND FORM A USER THROUGH TINKER
 5 TRY DELETING THE MANY TO MANY RELATIONSHIP THROUGH DETACH THAN DELETE
-6 ADD A DISABLE ACCOUNT FEATURE FOR STUDENTS WHO LEAVE COLLEGE !!!!!
-7 Make the roll numbers stick and give it a nice background !!!!!!!!!
-9 ADD A CHECK ALL FEATURE SO THAT ALL ARE PRESENT !!!!!!!!!!!!
+ FEATURES!!!!!!
+ ADD A DISABLE ACCOUNT FEATURE FOR STUDENTS WHO LEAVE COLLEGE !!!!!
+ Make the roll numbers stick and give it a nice background !!!!!!!!!
+ ADD A CHECK ALL FEATURE SO THAT ALL ARE PRESENT !!!!!!!!!!!!
 Make Todays attendance the first column after name so no scrolling to see the latest attendance.
 Add a status key on back() function of EnsureTeacherIsAuthorized middleware
-Google how to handle account suspensions
+Google how to handle account suspensions!!!!!! COMPLETE THIS
+SEE WHAT THE LOGOUT FUNCITON DOES ON $this->guard()->logout
 ////////////////////////
 
 1 Design so that the click can be registered even outsite of the name DONE

@@ -23,22 +23,26 @@ class DatabaseSeeder extends Seeder
             'name' => "Sanoj Raj Shrestha",
             'password' => Hash::make('password'),
             'email' => 'sanoj.shrestha.13@gmail.com',
+            'is_suspended' => false,
             'teacher_code' => "11111"
         ]);
         User::create([
             'name' => "Praches Acharya",
             'password' => Hash::make('zxcvbnm,./'),
             'email' => 'praches@gmail.com',
+            'is_suspended' => false,
             'teacher_code' => "22222"
         ]);
         Admin::firstorCreate([
             'name' => "Sanoj Raj Shrestha",
             'email' => "sanoj.shrestha.13@gmail.com",
+            'is_suspended' => false,
             'password' => Hash::make('adminpass'),
         ]);
         Admin::firstorCreate([
             'name' => "Praches Acharya",
             'email' => "praches@gmail.com",
+            'is_suspended' => false,
             'password' => Hash::make('zxcvbnm,./'),
         ]);
 
@@ -83,6 +87,7 @@ class DatabaseSeeder extends Seeder
             $student['group'] = $data['group'];
             $student['batch'] = $batch;
             $student['roll'] = substr($data['roll_number'], -2);
+            $student['is_suspended'] = false;
             $student->save();
             echo ('NEW student ENTRY CREATED!');
             array_push($storedStudentsArray, $data['roll_number']);

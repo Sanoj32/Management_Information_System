@@ -17,7 +17,7 @@ class CreateBctSubjectsTable extends Migration
             $table->string('subject_code')->primary(); // unique code to represent the subject
             $table->string('name')->unique();
             $table->smallInteger('semester');
-            $table->timestamps();
+        $table->timestamps();
         });
     }
 
