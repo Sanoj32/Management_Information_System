@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('teacher_code')->primary();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('is_suspended');
             $table->rememberToken();
             $table->timestamps();
         });

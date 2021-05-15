@@ -1,5 +1,35 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
+        {{-- Flashing session data --}}
+        @if (session('attendanceSuccess'))
+        <div class="alert alert-success">
+            {{ session('attendanceSuccess') }}
+        </div>
+        @endif
+
+        @if (session('attendanceUpdateSuccess'))
+        <div class="alert alert-success">
+            {{ session('attendanceUpdateSuccess') }}
+        </div>
+        @endif
+
+        @if (session('attendanceUpdateFailed'))
+        <div class="alert alert-danger">
+            {{ session('attendanceUpdateFailed') }}
+        </div>
+        @endif
+
+        @if(session('attendanceFailed'))
+        <div class="alert alert-danger">
+            {{ session('attendanceFailed') }}
+        </div>
+        @endif
+
+        @if(session('unAuthorizedSubject'))
+        <div class="alert alert-danger">
+            {{session('unAuthorizedSubject')}}
+        </div>
+        @endif
         <a class="navbar-brand p4-4" href="{{ url('/') }}">
             LEC M.I.S.
         </a>

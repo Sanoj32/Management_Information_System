@@ -15,17 +15,7 @@ $totalClasses = $previousAttendances->count() / $students->count();
 <link rel="stylesheet" href="{{asset('css/attendance_table.css')}}">
 <div class="container">
     <div class="row">
-        @if (session('attendanceSuccess'))
-        <div class="alert alert-success">
-            {{ session('attendanceSuccess') }}
-        </div>
-        @endif
-
-        @if (session('attendanceUpdateSuccess'))
-        <div class="alert alert-success">
-            {{ session('attendanceUpdateSuccess') }}
-        </div>
-        @endif
+        
         <div class="col-md-8">
             <h2>{{$subject->name}} </h2>
             <h2>{{$batch}}th batch | Day {{$day}}</h2>
@@ -54,7 +44,7 @@ $totalClasses = $previousAttendances->count() / $students->count();
                             @if($day >= 6) {{-- day >=6 meaning atleast 5 attendance are required for the latest on 1st col and P/T tab to show up --}}
 
                             {{-- Display the Present/Absent Ratio --}}
-                            <th class="border-white border-right px-1" style="min-width: 2px">P/T
+                            <th class="border-white border-right px-1" style="min-width: 2px">Present Count
                             </th>
 
                             <th class="border-white border-right px-1" style="min-width: 2px"><?= $day - 1 ?>
@@ -142,7 +132,7 @@ $totalClasses = $previousAttendances->count() / $students->count();
                                                                  }
 
                                 ?>
-                                    {{$presentClasses}}/{{$totalClasses}}
+                                    {{$presentClasses}}
                                 </td>
 
                                 {{-- Display the latest attendance taken in the first column as P and A --}}

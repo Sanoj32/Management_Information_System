@@ -65,7 +65,8 @@ REFORMATIING THE CODE
 7 Make the roll numbers stick and give it a nice background !!!!!!!!!
 9 ADD A CHECK ALL FEATURE SO THAT ALL ARE PRESENT !!!!!!!!!!!!
 Make Todays attendance the first column after name so no scrolling to see the latest attendance.
-
+Add a status key on back() function of EnsureTeacherIsAuthorized middleware
+Google how to handle account suspensions
 ////////////////////////
 
 1 Design so that the click can be registered even outsite of the name DONE

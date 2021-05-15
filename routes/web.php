@@ -52,11 +52,13 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 Auth::routes();
 Route::prefix('/teachers')->name('teacher.')->middleware('auth')->group(function () {
     Route::get('/home', [AttendanceController::class, 'home'])->name('home');
-    Route::get('/attendancedashboard/{batch}/{subject}', [AttendanceController::class, 'index']);
-    Route::get('/attendance/{batch}/{subject}/{day}', [AttendanceController::class, 'showAttendanceView']);
-    Route::post('/attendance/{batch}/{subject}/{day}', [AttendanceController::class, 'recordAttendance'])->name('recordAttendance');
-    Route::get('/attendance/{batch}/{subject}/{lastDay}/edit', [AttendanceController::class, 'showUpdateView']);
-    Route::patch('/attendance/{batch}/{subject}/{lastDay}', [AttendanceController::class, 'updateAttendance']);
+    Route::middleware('authorized:batch,subject')->group(function () {
+        Route::get('/attendancedashboard/{batch}/{subject}', [AttendanceController::class, 'index']);
+        Route::get('/attendance/{batch}/{subject}/{day}', [AttendanceController::class, 'showAttendanceView']);
+        Route::post('/attendance/{batch}/{subject}/{day}', [AttendanceController::class, 'recordAttendance'])->name('recordAttendance');
+        Route::get('/attendance/{batch}/{subject}/{lastDay}/edit', [AttendanceController::class, 'showUpdateView']);
+        Route::patch('/attendance/{batch}/{subject}/{lastDay}', [AttendanceController::class, 'updateAttendance']);
+    });
 
 
 

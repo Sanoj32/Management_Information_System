@@ -4,11 +4,7 @@
 
 <div class="container">
     <div class="row">
-        @if (session('attendanceUpdateFailed'))
-        <div class="alert alert-danger">
-            {{ session('attendanceUpdateFailed') }}
-        </div>
-        @endif
+        
         <div class="col-md-8">
             <h2>EDIT Attendance of <br>
                 {{$subject->name}}</h2>
