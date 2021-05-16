@@ -32,7 +32,11 @@
         @endif
         <a class="navbar-brand p4-4" href="{{ url('/') }}">
             LEC M.I.S.
+
+
         </a>
+
+
         <a class="navbar-brand " style="text-align:center;" href="{{ url('/updates') }}">
             Updates
         </a>
@@ -85,5 +89,6 @@
                 @endif
             </ul>
         </div>
+
     </div>
 </nav>

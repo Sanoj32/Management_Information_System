@@ -5,7 +5,6 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-           
 
             <div class="float-right">
                 {{$nepaliDate}}
@@ -16,6 +15,8 @@
             <h2>Attendance of <br>
                 {{$subject->name}}</h2>
             <h2> <span>{{$batch}}th batch | Day {{$day}} </span></h2>
+            <button class="btn btn-outline-success my-2" id="checkthis" onclick="checkAll()">Check all</button>
+
             <form method="POST" enctype="multipart/form-data" action="/teachers/attendance/<?=$batch ?>/<?= $subject->subject_code ?>/ <?= $day ?>">
                 @csrf
                 @foreach($students as $student)
@@ -33,3 +34,27 @@
     </div>
 </div>
 @endsection
+<script type="application/javascript">
+    var clicked = false
+
+    function checkAll() {
+        clicked = !clicked
+
+        let buttons = document.getElementsByClassName('checkboxid')
+        if (clicked == true) {
+            for (let button of buttons) {
+                button.checked = true
+            }
+            document.getElementById("checkthis").innerHTML = "Uncheck All";
+
+        } else {
+            for (let button of buttons) {
+                button.checked = false
+            }
+            document.getElementById("checkthis").innerHTML = "Check All";
+
+        }
+
+    }
+
+</script>

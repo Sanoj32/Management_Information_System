@@ -66,7 +66,7 @@ REFORMATIING THE CODE
  Make the roll numbers stick and give it a nice background !!!!!!!!!
  ADD A CHECK ALL FEATURE SO THAT ALL ARE PRESENT !!!!!!!!!!!!
 Make Todays attendance the first column after name so no scrolling to see the latest attendance.
-Add a status key on back() function of EnsureTeacherIsAuthorized middleware
+Add a status key on back() functionof  EnsureTeacherIsAuthorized middleware
 Google how to handle account suspensions!!!!!! COMPLETE THIS
 SEE WHAT THE LOGOUT FUNCITON DOES ON $this->guard()->logout
 COMPLETE THE PASSWORD RESET
@@ -84,4 +84,3 @@ Teacher should be allowed to enter marks for each students.
 New tab for internal marking system.
 All student's all subjects report card.
 OTP for teachers for initial registration.
-

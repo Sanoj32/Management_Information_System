@@ -19,6 +19,7 @@ class CheckIfSuspended
     {
         if (Auth::guard('web')->check()) {
             if (Auth::guard('web')->user()->is_suspended) {
+                Auth::logout();
                 $request->session()->invalidate();
 
                 $request->session()->regenerateToken();
@@ -27,7 +28,7 @@ class CheckIfSuspended
         }
         if (Auth::guard('admin')->check()) {
             if (Auth::guard('admin')->user()->is_suspended) {
-
+                Auth::logout();
                 $request->session()->invalidate();
 
                 $request->session()->regenerateToken();

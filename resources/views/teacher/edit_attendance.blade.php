@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row">
-        
+
         <div class="col-md-8">
             <h2>EDIT Attendance of <br>
                 {{$subject->name}}</h2>
@@ -26,7 +26,7 @@
                 </div>
 
                 @endforeach
-                <button type="submit" class="btn btn-success"> Submit attendance</button>
+                <button type="submit" class="btn btn-secondary"> Update attendance</button>
             </form>
         </div>
     </div>

@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'authorized' => \App\Http\Middleware\EnsureTeacherIsAuthorized::class,
-        'suspended' => \App\Http\Middleware\CheckIfSuspended::class
+        'suspended' => \App\Http\Middleware\CheckIfSuspended::class,
+        'unsusredirect' => \App\Http\Middleware\RedirectIfNotSuspended::class
     ];
 }
