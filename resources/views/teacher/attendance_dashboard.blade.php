@@ -15,7 +15,7 @@ $totalClasses = $previousAttendances->count() / $students->count();
 <link rel="stylesheet" href="{{asset('css/attendance_table.css')}}">
 <div class="container">
     <div class="row">
-        
+
         <div class="col-md-8">
             <h2>{{$subject->name}} </h2>
             <h2>{{$batch}}th batch | Day {{$day}}</h2>
