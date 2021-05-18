@@ -25,9 +25,14 @@
         </div>
         @endif
 
-        @if(session('unAuthorizedSubject'))
+        @if(session('duplicateAttendance'))
         <div class="alert alert-danger">
-            {{session('unAuthorizedSubject')}}
+            {{session('duplicateAttendance')}}
+        </div>
+        @endif
+        @if(session('Duplica'))
+        <div class="alert alert-danger">
+            {{session('Duplica')}}
         </div>
         @endif
         <a class="navbar-brand p4-4" href="{{ url('/') }}">

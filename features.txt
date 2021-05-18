@@ -16,7 +16,6 @@ possibe fix- destroy session data or pull session data on the logout function
 Add a password reset option.
 Both admnin and user is logged out when the user ie teacher logs out.
 fix= All session data is invalidated and flushed when the user's logout method is called.
-2 attendances for the same day => Accidentally made edit route post and it went to construct
 ///////////
 ACUTAL ROUTES
 
@@ -61,18 +60,16 @@ REFORMATIING THE CODE
 3  ADD NECESSARY COMMENTS
 4 DELETE ADMIN FACTORY AND FORM A USER THROUGH TINKER
 5 TRY DELETING THE MANY TO MANY RELATIONSHIP THROUGH DETACH THAN DELETE
- FEATURES!!!!!!
- ADD A DISABLE ACCOUNT FEATURE FOR STUDENTS WHO LEAVE COLLEGE !!!!!
- Make the roll numbers stick and give it a nice background !!!!!!!!!
- ADD A CHECK ALL FEATURE SO THAT ALL ARE PRESENT !!!!!!!!!!!!
-Make Todays attendance the first column after name so no scrolling to see the latest attendance.
+FEATURES!!!!!!
+ADD A DISABLE ACCOUNT FEATURE FOR STUDENTS WHO LEAVE COLLEGE !!!!!
+Make the roll numbers stick and give it a nice background !!!!!!!!!
+ADD A CHECK ALL FEATURE SO THAT ALL ARE PRESENT !!!!!!!!!!!!
 Add a status key on back() functionof  EnsureTeacherIsAuthorized middleware
-Google how to handle account suspensions!!!!!! COMPLETE THIS
 SEE WHAT THE LOGOUT FUNCITON DOES ON $this->guard()->logout
 COMPLETE THE PASSWORD RESET
 ////////////////////////
 
-1 Design so that the click can be registered even outsite of the name DONE
+Make a drop down and let the user select the day to edit the attendance
 Attendance sum column
 Average present percent per subject
 Average present percent per semester

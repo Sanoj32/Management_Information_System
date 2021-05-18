@@ -59,6 +59,14 @@ class AttendanceController extends Controller
         if (empty(request()->attendance)) {
             return back()->with('attendanceFailed', 'Attendance can not be empty! Atleast one student must be present.');
         }
+        // Check for submitting duplicate attendance causing attendance of same batch, subject and day to be stored twice.
+        $testAttendance = BctAttendance::where('subject_code', $subject->subject_code)
+            ->where('batch', $batch)
+            ->where('day', $day)
+            ->first();
+        if (!empty($testAttendance)) {
+            return redirect('/')->with('duplicateAttendance', 'The attendance for this day has already been taken');
+        }
 
         $students = BctStudent::where('batch', $batch)->get();
         $presentStudents = request()->attendance;

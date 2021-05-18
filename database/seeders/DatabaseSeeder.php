@@ -19,27 +19,27 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(10)->create();
-        User::create([
+        User::firstOrCreate([
             'name' => "Sanoj Raj Shrestha",
             'password' => Hash::make('password'),
             'email' => 'sanoj.shrestha.13@gmail.com',
             'is_suspended' => false,
             'teacher_code' => "11111"
         ]);
-        User::create([
+        User::firstOrCreate([
             'name' => "Praches Acharya",
             'password' => Hash::make('zxcvbnm,./'),
             'email' => 'praches@gmail.com',
             'is_suspended' => false,
             'teacher_code' => "22222"
         ]);
-        Admin::firstorCreate([
+        Admin::firstOrCreate([
             'name' => "Sanoj Raj Shrestha",
             'email' => "sanoj.shrestha.13@gmail.com",
             'is_suspended' => false,
             'password' => Hash::make('adminpass'),
         ]);
-        Admin::firstorCreate([
+        Admin::firstOrCreate([
             'name' => "Praches Acharya",
             'email' => "praches@gmail.com",
             'is_suspended' => false,

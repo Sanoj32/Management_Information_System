@@ -26,7 +26,9 @@
                 </div>
 
                 @endforeach
-                <button type="submit" class="btn btn-secondary"> Update attendance</button>
+                <div class="pt-1">
+                    <button type="submit" class="btn btn-secondary my-2"> Update attendance</button>
+                </div>
             </form>
         </div>
     </div>

@@ -18,7 +18,7 @@ app.css:868
     padding: 10px 0;
     text-align: center;
     color: #fff;
-    width: 4%;\
+    width: 4%;
 }
 .TShifts__table tbody tr td:first-child {
     width: 20px !important;
@@ -29,6 +29,14 @@ app.css:868
     border-left: 1px solid #bec6c8;
     border-bottom: 1px solid #bec6c8;
 	border-right: 1px solid  #bec6c8;;
+    max-width: 4%;
+    cursor: pointer;
+}
+.today{
+    border-left: 1px solid #000000 !important;
+    border-top: 1px solid #000000 !important;
+    border-bottom: 1px solid #000000 !important;
+    border-right: 1px solid #000000 !important;
     max-width: 4%;
     cursor: pointer;
 }

@@ -5,7 +5,11 @@
     <div class="row">
         <div class="col-md-8">
             <h1>Change logs</h1>
-            <ul>
+        <ul>
+                <li class="pb-3">
+                    <h4>2021/5/16</h3>
+                        Check All function added
+                </li>
                 <li class="pb-3">
                     <h4>2021/5/15</h3>
                         Fixed crash if day > 6 [Bugfix]
