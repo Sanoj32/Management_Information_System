@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             'is_suspended' => false,
             'teacher_code' => "11111"
         ]);
+
         User::firstOrCreate([
             'name' => "Praches Acharya",
             'password' => Hash::make('zxcvbnm,./'),
@@ -33,6 +34,7 @@ class DatabaseSeeder extends Seeder
             'is_suspended' => false,
             'teacher_code' => "22222"
         ]);
+
         Admin::firstOrCreate([
             'name' => "Sanoj Raj Shrestha",
             'email' => "sanoj.shrestha.13@gmail.com",
@@ -91,6 +93,16 @@ class DatabaseSeeder extends Seeder
             $student->save();
             echo ('NEW student ENTRY CREATED!');
             array_push($storedStudentsArray, $data['roll_number']);
+        }
+        $sanoj = User::where('teacher_code', '11111')->first();
+        $praches = User::where('teacher_code', '22222')->first();
+        $batch = '74';
+        $subject_code = ['bctSH401', 'bctCT401', 'bctME401', 'bctSH452', 'bctCE451', 'bctEE451'];
+        foreach ($subject_code as $sub_code) {
+            $sanoj->bctSubjects()->attach($sub_code, ['batch' => $batch]);
+        }
+        foreach ($subject_code as $sub_code) {
+            $praches->bctSubjects()->attach($sub_code, ['batch' => $batch]);
         }
     }
 }

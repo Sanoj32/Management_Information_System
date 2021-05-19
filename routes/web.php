@@ -47,7 +47,9 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/teachers/{teacher_code}/edit/{batch}', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'showEditView']);
 
     Route::post('/teachers/{teacher_code}/edit/{batch}/{subject_code}', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'changePermission']);
+    // Route::get('/students/{roll}',[])
 });
+
 
 Auth::routes();
 Route::prefix('/teachers')->name('teacher.')->middleware('auth')->group(function () {

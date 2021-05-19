@@ -14,10 +14,17 @@ $totalClasses = $previousAttendances->count() / $students->count();
 
  //Get the nepali date of latest attendance taken
 $thisAttendance =  $previousAttendances->where('day',$day - 1)->first(); // Get the attendance of this specific column
-$attendanceDate = $thisAttendance->created_at;
-$nepaliDate = DateConverter::fromEnglishDate($thisAttendance->created_at->year, $thisAttendance->created_at->month, $thisAttendance->created_at->day)->toNepaliDate();
-$nepaliMonth = explode('-',$nepaliDate,3)[1];
-$nepaliDay = explode('-',$nepaliDate,3)[2];
+if($thisAttendance != null){
+    $attendanceDate = $thisAttendance->created_at;
+    $attendanceDate = $thisAttendance->created_at;
+    $nepaliDate = DateConverter::fromEnglishDate($thisAttendance->created_at->year, $thisAttendance->created_at->month, $thisAttendance->created_at->day)->toNepaliDate();
+    $nepaliMonth = explode('-',$nepaliDate,3)[1];
+    $nepaliDay = explode('-',$nepaliDate,3)[2];
+}else{
+    $nepaliDate = null;
+}
+
+
                             ?>
 <link rel="stylesheet" href="{{asset('css/attendance_table.css')}}">
 <div class="container">
@@ -28,9 +35,11 @@ $nepaliDay = explode('-',$nepaliDate,3)[2];
             <h2>{{$batch}}th batch | Day {{$day}}</h2>
             <h3 class="pb-2"><?php echo getNameOfDay($dateNow->dayOfWeek) ?> :- {{$nepaliDateToday}}</h3>
             @if($nepaliDateToday == $nepaliDate)
-            <h4>Today's attendance has been saved in the database. <a href="/teachers/attendance/<?=$batch?>/<?=$subject->subject_code?>/<?=$day?>"><button class="btn btn-outline-success mb-3 px-3"> Take again?</button></a> </h4>
+            <h4>
+
+                Today's attendance has been saved in the database. <a href="/teachers/attendance/<?=$batch?>/<?=$subject->subject_code?>/<?=$day?>"><button class="btn btn-outline-success mb-3 px-3" id="takeattendance"> Take again?</button></a> </h4>
             @else
-            <h2><a href="/teachers/attendance/<?=$batch?>/<?=$subject->subject_code?>/<?=$day?>"><button class="btn btn-success mb-3 px-3"> Take today's attendance. </button></a> </h2>
+            <h2><a href="/teachers/attendance/<?=$batch?>/<?=$subject->subject_code?>/<?=$day?>"><button class="btn btn-success mb-3 px-3" id="takeattendance"> Take today's attendance. </button></a> </h2>
             @endif
             @if($previousAttendances->isNotEmpty() )
 
@@ -70,7 +79,7 @@ $nepaliDay = explode('-',$nepaliDate,3)[2];
                         <th class="border-white border-right px-1" style="min-width: 2px;"><?= $day - 1 ?>
 
                             <div>
-                                @if($nepaliDateToday == $nepaliDate)
+                                @if($nepaliDate != null && $nepaliDateToday == $nepaliDate)
                                 Today
                                 @else
                                 {{$nepaliMonth}}|{{$nepaliDay}}

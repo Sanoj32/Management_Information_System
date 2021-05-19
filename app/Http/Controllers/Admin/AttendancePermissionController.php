@@ -52,6 +52,7 @@ class AttendancePermissionController extends Controller
     public function changePermission($teacher_code, $batch, $subject_code)
     {
         $teacher = User::where('teacher_code', $teacher_code)->first();
+        // Check if the teacher has permission for that subject
         $exists = DB::table('bct_authorized_subjects')
             ->where('subject_code', $subject_code)
             ->where('teacher_code', $teacher_code)

@@ -14,7 +14,7 @@
 
             <h2>Attendance of <br>
                 {{$subject->name}}</h2>
-            <h2> <span>{{$batch}}th batch | Day {{$day}} </span></h2>
+            <h2> <span>{{$batch}}th batch | Day <span id="day"> {{$day}} </span> </span></h2>
             <button class="btn btn-outline-success my-2" id="checkthis" onclick="checkAll()">Check all</button>
 
             <form method="POST" enctype="multipart/form-data" action="/teachers/attendance/<?=$batch ?>/<?= $subject->subject_code ?>/ <?= $day ?>">
@@ -23,13 +23,13 @@
                 <?php $roll = substr($student->roll_number,-2);
                  ?>
                 <div class="input-group">
-                    <input type="checkbox" id="<?= $student->name ?>" class="checkboxid" name="attendance[]" value="{{$student->roll_number}}" hidden />
-                    <label for="<?= $student->name ?>" class="checkbox"><span class="text"><span style="font-size:20px; font-weight:bold">{{$roll}}</span> <span class="pl-2">{{$student->name}}</span></span><span class="icon"></span></label>
+                    <input dusk="checkbox" type="checkbox" id="<?= $student->roll_number ?>" class="checkboxid" name="attendance[]" value="{{$student->roll_number}}" hidden />
+                    <label for="<?= $student->roll_number ?>" class="checkbox"><span class="text"><span style="font-size:20px; font-weight:bold">{{$roll}}</span> <span class="pl-2">{{$student->name}}</span></span><span class="icon"></span></label>
                 </div>
 
                 @endforeach
                 <div class="pt-1">
-                    <button type="submit" class="btn btn-success my-2"> Submit attendance</button>
+                    <button id="submitattendance" type="submit" class="btn btn-success my-2"> Submit attendance</button>
                 </div>
             </form>
         </div>

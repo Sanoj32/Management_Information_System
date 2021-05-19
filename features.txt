@@ -67,10 +67,10 @@ ADD A CHECK ALL FEATURE SO THAT ALL ARE PRESENT !!!!!!!!!!!!
 Add a status key on back() functionof  EnsureTeacherIsAuthorized middleware
 SEE WHAT THE LOGOUT FUNCITON DOES ON $this->guard()->logout
 COMPLETE THE PASSWORD RESET
+
 ////////////////////////
 
 Make a drop down and let the user select the day to edit the attendance
-Attendance sum column
 Average present percent per subject
 Average present percent per semester
 Present percent per student
@@ -80,4 +80,8 @@ Marking system.
 Teacher should be allowed to enter marks for each students.
 New tab for internal marking system.
 All student's all subjects report card.
-OTP for teachers for initial registration.
+OTP for teachers for initial registration. (Inhouse registration preferable)
+
+
+BEFORE PUSHING ON PRODUCTION
+REMOVE PASSWORDS FROM SEEDERS AND BROWSER TESTS
