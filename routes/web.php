@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
-})->middleware(['guest', 'guest:admin']);
+});
 Route::get('/updates', function () {
     return view('updates');
 });
@@ -51,7 +51,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 });
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::prefix('/teachers')->name('teacher.')->middleware('auth')->group(function () {
     Route::get('/home', [AttendanceController::class, 'home'])->name('home');
     Route::middleware('authorized:batch,subject')->group(function () {
