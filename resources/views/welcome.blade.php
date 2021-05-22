@@ -6,6 +6,7 @@
         <h1>WELCOME TO LEC MANAGEMENT INFORMATION SYSTEM</h1>
         <div class="col-md-6">
             <a href="/admin/login">
+
                 <h1>Login as Admin </h1>
             </a>
         </div>

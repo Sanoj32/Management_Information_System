@@ -17,6 +17,9 @@
                     <a href="/admin/teachers">
                         <h1>Manage Attendance Permission</h1>
                     </a>
+                    <a href="/register">
+                        <h1>Register Teachers</h1>
+                    </a>
                 </div>
             </div>
         </div>

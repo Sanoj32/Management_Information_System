@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('desiredredirect');
 Route::get('/updates', function () {
     return view('updates');
 });

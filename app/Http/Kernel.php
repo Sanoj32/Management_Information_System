@@ -64,6 +64,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'authorized' => \App\Http\Middleware\EnsureTeacherIsAuthorized::class,
         'suspended' => \App\Http\Middleware\CheckIfSuspended::class,
-        'unsusredirect' => \App\Http\Middleware\RedirectIfNotSuspended::class
+        'unsusredirect' => \App\Http\Middleware\RedirectIfNotSuspended::class,
+        'desiredredirect' => \App\Http\Middleware\RedirectToDesiredDashboard::class
     ];
 }
