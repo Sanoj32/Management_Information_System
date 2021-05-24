@@ -23,8 +23,6 @@ if($thisAttendance != null){
 }else{
     $nepaliDate = null;
 }
-
-
                             ?>
 <link rel="stylesheet" href="{{asset('css/attendance_table.css')}}">
 <div class="container">
@@ -35,9 +33,9 @@ if($thisAttendance != null){
             <h2>{{$batch}}th batch | Day {{$day}}</h2>
             <h3 class="pb-2"><?php echo getNameOfDay($dateNow->dayOfWeek) ?> :- {{$nepaliDateToday}}</h3>
             @if($nepaliDateToday == $nepaliDate)
-            <h4>
+            <h4 class="my-3 py-2 ">
 
-                Today's attendance has been saved in the database. <a href="/teachers/attendance/<?=$batch?>/<?=$subject->subject_code?>/<?=$day?>"><button class="btn btn-outline-success mb-3 px-3" id="takeattendance"> Take again?</button></a> </h4>
+                <span> ✅ Attendance saved. <span> <a class=" pl-2" href="/teachers/attendance/<?=$batch?>/<?=$subject->subject_code?>/<?=$day?>"><button class="btn btn-outline-secondary mb-3" id="takeattendance"> Take again?</button></a></h4>
             @else
             <h2><a href="/teachers/attendance/<?=$batch?>/<?=$subject->subject_code?>/<?=$day?>"><button class="btn btn-success mb-3 px-3" id="takeattendance"> Take today's attendance. </button></a> </h2>
             @endif

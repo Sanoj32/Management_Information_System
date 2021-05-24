@@ -3,6 +3,7 @@
 @section('content')
 
 <?php
+dd(Auth::guard('user')->check())
     $students = \App\Models\BctStudent::all();
     ?>
 <div class="container">
@@ -17,7 +18,7 @@
                     <label for="<?= $student->name ?>" class="checkbox"><span class="text">{{$student->name}}</span><span class="icon"></span></label>
                 </div>
                 @endforeach
-                <button type="submit" class="btn btn-success"> Submit attendance</button>
+                <button type="submit" class="btn btn-success"> Submit attendance</button>\
             </form>
         </div>
     </div>

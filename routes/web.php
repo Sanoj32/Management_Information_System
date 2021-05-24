@@ -3,6 +3,7 @@
 // use Illuminate\Support\Facades\App;
 
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,8 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
  */
+
+// Route::get('/mail', [MailController::class, 'sendMail']);
 
 Route::get('/', function () {
     return view('welcome');
@@ -48,6 +51,9 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 
     Route::post('/teachers/{teacher_code}/edit/{batch}/{subject_code}', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'changePermission']);
     // Route::get('/students/{roll}',[])
+
+    // Bct Attendance Report Controller
+    Route::get('/attendance', [\App\Http\Controllers\Admin\BctAttendanceReportController::class, 'index']);
 });
 
 
@@ -69,9 +75,9 @@ Route::prefix('/teachers')->name('teacher.')->middleware('auth')->group(function
 });
 Route::get('/suspended', function () {
     return view('suspended');
-})->middleware("unsusredirect");
+})->middleware("unsusredirect"); // unsusredirect => redirect if the user isn't suspeneded
 // // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/test', [App\Http\Controllers\WebsiteController::class, 'index']);
+Route::get('/test', [App\Http\Controllers\WebsiteController::class, 'index']);
 // Route::get('/vue', [\App\Http\Controllers\WebsiteController::class, 'vue']);
 // Route::post('/test', [App\Http\Controllers\WebsiteController::class, 'takeAttendance'])->name('attendance');
 // // Route::get('/attendance/bct/{batch}/{subject_code}',[])

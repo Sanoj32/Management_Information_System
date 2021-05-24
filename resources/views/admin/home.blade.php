@@ -13,13 +13,17 @@
                         {{ session('status') }}
                     </div>
                     @endif
-
-                    <a href="/admin/teachers">
-                        <h1>Manage Attendance Permission</h1>
-                    </a>
-                    <a href="/register">
-                        <h1>Register Teachers</h1>
-                    </a>
+                    <ul class="list-group">
+                        <a href="/admin/teachers">
+                            <li class="list-group-item disabled font">Manage Attendance Permission</li>
+                        </a>
+                        <a href="/register">
+                            <li class="list-group-item disabled">Register Teachers</li>
+                        </a>
+                        <a href="/admin/attendance">
+                            <li class="list-group-item disabled">Close Attendance</li>
+                        </a>
+                    </ul>
                 </div>
             </div>
         </div>

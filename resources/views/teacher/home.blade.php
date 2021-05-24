@@ -21,13 +21,15 @@ use App\Models\BctSubject;
                     @if($teacher->bctSubjects->isNotEmpty() )
                     <ul class="list-group pl-3 pb-3">
                         @foreach ($teacher->bctSubjects as $subject)
+                        <ul class="list-group">
+                            {{-- DISPLAYS SUBJECTS A TEACHER IS PREMITED TO TEACH OR MODIFY ATTENDENCE OF. --}}
+                            <a href="/teachers/attendancedashboard/<?=$subject->bctAuthorizedSubjects->batch?>/<?=$subject->subject_code?>">
+                                <span class="pl-2 ">
+                                    <li class="list-group-item disabled" dusk="sub" id="<?=$subject->subject_code ?>"> {{$subject->bctAuthorizedSubjects->batch}}th batch <span class="py-2 px-2">{{$subject->name}}</span> </li>
+                                </span>
+                            </a>
+                        </ul>
 
-                        {{-- DISPLAYS SUBJECTS A TEACHER IS PREMITED TO TEACH OR MODIFY ATTENDENCE OF. --}}
-                        <a href="/teachers/attendancedashboard/<?=$subject->bctAuthorizedSubjects->batch?>/<?=$subject->subject_code?>">
-                            <span class="pl-2 ">
-                                <li dusk="sub" id="<?=$subject->subject_code ?>"> {{$subject->bctAuthorizedSubjects->batch}}th batch <span class="py-2 px-2">{{$subject->name}}</span> </li>
-                            </span>
-                        </a>
                         @endforeach
                     </ul>
                     @else

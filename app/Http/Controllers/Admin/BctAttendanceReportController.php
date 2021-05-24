@@ -1,20 +1,36 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\BctAttendance;
+use App\Models\BctSubject;
 use Illuminate\Http\Request;
-// Bct Attendance Reports Controller
 
-class BARController extends Controller
+class BctAttendanceReportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
     /**
-     * Display a listing of the resource.
+     * Display a listing of the all active attendances.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        
+        $activeAttendances = BctAttendance::select('subject_code', 'batch')->distinct()->get();
+        $activeAttendances = $activeAttendances->sortBy('batch');
+        $uniqueBatches = [];
+        foreach ($activeAttendances as $active) {
+            if (!in_array($active->batch, $uniqueBatches)) {
+                array_push($uniqueBatches, $active->batch);
+            }
+            $subject = BctSubject::select('name')->where('subject_code', $active->subject_code)->first();
+            $active->name = $subject->name;
+        }
+        return view('admin.active_attendances', compact('activeAttendances', 'uniqueBatches'));
     }
 
     /**
@@ -24,7 +40,7 @@ class BARController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**

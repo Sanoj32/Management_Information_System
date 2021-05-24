@@ -19,7 +19,6 @@ class CreateBctAttendanceReportsTable extends Migration
             $table->string('subject_code');
             $table->integer('present_days');
             $table->integer('total_days');
-
             $table->foreign('roll_number')->references('roll_number')->on('bct_students');
             $table->foreign('subject_code')->references('subject_code')->on('bct_subjects');
             $table->timestamps();
