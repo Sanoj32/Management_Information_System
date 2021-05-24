@@ -12,6 +12,8 @@
                 </div>
             </div>
 
+
+
             <h2>Attendance of <br>
                 {{$subject->name}}</h2>
             <h2> <span>{{$batch}}th batch | Day <span id="day"> {{$day}} </span> </span></h2>
@@ -19,6 +21,10 @@
 
             <form method="POST" enctype="multipart/form-data" action="/teachers/attendance/<?=$batch ?>/<?= $subject->subject_code ?>/ <?= $day ?>">
                 @csrf
+                {{-- DELETE --}}
+                <div class="pt-1">
+                    <button id="submitattendance" type="submit" class="btn btn-success my-2"> Submit attendance</button>
+                </div>
                 @foreach($students as $student)
                 <?php $roll = substr($student->roll_number,-2);
                  ?>

@@ -30,15 +30,13 @@
             {{session('duplicateAttendance')}}
         </div>
         @endif
-        @if(session('Duplica'))
+        @if(session('duplicateReport'))
         <div class="alert alert-danger">
-            {{session('Duplica')}}
+            {{session('duplicateReport')}}
         </div>
         @endif
         <a class="navbar-brand p4-4" href="{{ url('/') }}">
             LEC M.I.S.
-
-
         </a>
 
 

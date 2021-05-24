@@ -54,6 +54,8 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 
     // Bct Attendance Report Controller
     Route::get('/attendance', [\App\Http\Controllers\Admin\BctAttendanceReportController::class, 'index']);
+    Route::get('/attendance/{batch}/{subject}', [\App\Http\Controllers\Admin\BctAttendanceReportController::class, 'show']);
+    Route::post('/attendance/close/{batch}/{subject}', [\App\Http\Controllers\Admin\BctAttendanceReportController::class, 'create']);
 });
 
 

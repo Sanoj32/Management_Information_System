@@ -10,8 +10,7 @@
 
 <script>
 export default {
-    props:['connection','subjectCode','teacherCode','batch']
-    ,
+    props:['connection','subjectCode','teacherCode','batch'],
     data: function() {
         return {
             danger: this.connection,

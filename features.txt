@@ -74,7 +74,7 @@ Average present percent per subject
 Average present percent per semester
 Present percent per student
 Present percent graph for admin.
-Bar graph comparing attendance of different subjects per student.
+Bar graph comparing attend ance of different subjects per student.
 Marking system.
 Teacher should be allowed to enter marks for each students.
 New tab for internal marking system.

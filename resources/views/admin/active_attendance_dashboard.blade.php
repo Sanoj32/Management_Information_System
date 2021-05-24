@@ -30,29 +30,16 @@ if($thisAttendance != null){
 
         <div class="col-md-8">
             <h2>{{$subject->name}} </h2>
-            <h2>{{$batch}}th batch | Day {{$day}}</h2>
+
             <h3 class="pb-2"><?php echo getNameOfDay($dateNow->dayOfWeek) ?> :- {{$nepaliDateToday}}</h3>
-            @if($nepaliDateToday == $nepaliDate)
-            <h4 class="my-3 py-2 ">
+            <form method="POST" action="/admin/attendance/close/<?=$batch?>/<?=$subject->subject_code?>">
+                @csrf
+                <button type=" submit" id="closeAttendance" class="btn btn-danger"> Close Attendance
 
-                <span> Attendance saved. <span> <a class=" pl-2" href="/teachers/attendance/<?=$batch?>/<?=$subject->subject_code?>/<?=$day?>"><button class="btn btn-outline-secondary mb-3" id="takeattendance"> Take again?</button></a></h4>
-            @else
-            <h2><a href="/teachers/attendance/<?=$batch?>/<?=$subject->subject_code?>/<?=$day?>"><button class="btn btn-success mb-3 px-3" id="takeattendance"> Take today's attendance. </button></a> </h2>
-            @endif
-            @if($previousAttendances->isNotEmpty() )
+            </form>
 
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Edit Attendance
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    @for($i = $day - 1; $i >= 1; $i--) <a class="dropdown-item" href="/teachers/attendance/<?=$batch?>/<?=$subject->subject_code?>/<?=$i; ?>/edit">Day <?=$i?></a> @endfor
 
-                </div>
-            </div>
         </div>
-        @endif
-
     </div>
 </div>
 <div class="row pl-1">
@@ -95,7 +82,7 @@ if($thisAttendance != null){
                                 $nepaliDay = explode('-',$nepaliDate,3)[2];
                                  ?>
 
-                        <th class="border-white border-right px-1" style="min-width: 2px"><?= $i ?>
+                        <th class=" border-white border-right px-1" style="min-width: 2px"><?= $i ?>
                             <div>{{$nepaliMonth}}|{{$nepaliDay}}</div>
                         </th>
                         <?php } ?>
@@ -220,3 +207,15 @@ if($thisAttendance != null){
 </div>
 </div>
 @endsection
+
+<script type="application/javascript">
+    function askConfirmation() {
+        var subjectCode = "<?php echo $subject->subject_code ?>";
+        var batch = "<?php echo $batch ?>";
+        console.log(batch, subjectCode)
+        if (confirm("Do you want to close this attendance? This process is irreversible!") == true) {
+            axios.post("/admin/attendance/close/" + batch + "/" + subjectCode)
+        }
+    }
+
+</script>

@@ -13,7 +13,7 @@
                         <h2 class="py-3">{{$batch}}th batch</h2>
                         @foreach ($activeAttendances as $activeAttendance )
                         @if($activeAttendance->batch == $batch)
-                        <a href="#">
+                        <a href="/admin/attendance/<?=$batch?>/<?=$activeAttendance->subject_code?>">
                             <li class="list-group-item disabled"> {{$activeAttendance->name}}</li>
                         </a>
                         @endif
