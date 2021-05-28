@@ -60,13 +60,14 @@ REFORMATIING THE CODE
 3  ADD NECESSARY COMMENTS
 4 DELETE ADMIN FACTORY AND FORM A USER THROUGH TINKER
 5 TRY DELETING THE MANY TO MANY RELATIONSHIP THROUGH DETACH THAN DELETE
+6 Make the routes more consistent
 
 
 FEATURES!!!!!!
 ADD A DISABLE ACCOUNT FEATURE FOR STUDENTS WHO LEAVE COLLEGE !!!!!
 Make the roll numbers stick and give it a nice background !!!!!!!!!
-SEE WHAT THE LOGOUT FUNCITON DOES ON $this->guard()->logout
 COMPLETE THE PASSWORD RESET
+Add a close all active attendances button.
 
 ////////////////////////
 
@@ -82,3 +83,6 @@ All student's all subjects report card.
 OTP for teachers for initial registration. (Inhouse registration preferable)
 BEFORE PUSHING ON PRODUCTION
 REMOVE PASSWORDS FROM SEEDERS AND BROWSER TESTS
+
+
+Benefits of closing attendances

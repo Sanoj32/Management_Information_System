@@ -56,10 +56,13 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/attendance', [\App\Http\Controllers\Admin\BctAttendanceReportController::class, 'index']);
     Route::get('/attendance/{batch}/{subject}', [\App\Http\Controllers\Admin\BctAttendanceReportController::class, 'show']);
     Route::post('/attendance/close/{batch}/{subject}', [\App\Http\Controllers\Admin\BctAttendanceReportController::class, 'create']);
+    Route::get('/closed/attendance', [\App\Http\Controllers\Admin\BctAttendanceReportController::class, 'closedAttendanceIndex']);
+    Route::get('/closed/attendancedashboard/{batch}/{subject}', [\App\Http\Controllers\Admin\BctAttendanceReportController::class, 'showClosedAttendanceDashboard']);
+    Route::get('/closed/attendance/{batch}', [\App\Http\Controllers\Admin\BctAttendanceReportController::class, 'showClosedAttendanceView']);
 });
 
 
-Auth::routes(['verify' => true]);
+Auth::routes();
 Route::prefix('/teachers')->name('teacher.')->middleware('auth')->group(function () {
     Route::get('/home', [AttendanceController::class, 'home'])->name('home');
     Route::middleware('authorized:batch,subject')->group(function () {
@@ -68,6 +71,7 @@ Route::prefix('/teachers')->name('teacher.')->middleware('auth')->group(function
         Route::post('/attendance/{batch}/{subject}/{day}', [AttendanceController::class, 'recordAttendance'])->name('recordAttendance');
         Route::get('/attendance/{batch}/{subject}/{lastDay}/edit', [AttendanceController::class, 'showUpdateView']);
         Route::patch('/attendance/{batch}/{subject}/{lastDay}', [AttendanceController::class, 'updateAttendance']);
+        Route::get('/closed/attendancedashboard/{batch}/{subject}', [AttendanceController::class, 'showClosedAttendanceView']);
     });
 
 

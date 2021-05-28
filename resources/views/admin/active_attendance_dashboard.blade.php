@@ -32,11 +32,8 @@ if($thisAttendance != null){
             <h2>{{$subject->name}} </h2>
 
             <h3 class="pb-2"><?php echo getNameOfDay($dateNow->dayOfWeek) ?> :- {{$nepaliDateToday}}</h3>
-            <form method="POST" action="/admin/attendance/close/<?=$batch?>/<?=$subject->subject_code?>">
-                @csrf
-                <button type=" submit" id="closeAttendance" class="btn btn-danger"> Close Attendance
+            <h4>Total classes = {{$totalClasses}}</h4>
 
-            </form>
 
 
         </div>
@@ -202,9 +199,16 @@ if($thisAttendance != null){
                 </table>
             </div>
         </div>
+        <form class="pt-4" method="POST" action="/admin/attendance/close/<?=$batch?>/<?=$subject->subject_code?>">
+            @csrf
+            <button type=" submit" id="closeAttendance" class="btn btn-danger"> Close Attendance </button>
+            <span class="pl-3"> WARNING!!! This process is irreversible. Attendances should only be closed after all classes are finished.</span>
+
+
+        </form>
+
     </div>
-</div>
-</div>
+
 </div>
 @endsection
 

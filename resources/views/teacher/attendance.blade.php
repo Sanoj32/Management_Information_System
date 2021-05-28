@@ -13,7 +13,6 @@
             </div>
 
 
-
             <h2>Attendance of <br>
                 {{$subject->name}}</h2>
             <h2> <span>{{$batch}}th batch | Day <span id="day"> {{$day}} </span> </span></h2>
@@ -47,22 +46,18 @@
 
     function checkAll() {
         clicked = !clicked
-
         let buttons = document.getElementsByClassName('checkboxid')
         if (clicked == true) {
             for (let button of buttons) {
                 button.checked = true
             }
             document.getElementById("checkthis").innerHTML = "Uncheck All";
-
         } else {
             for (let button of buttons) {
                 button.checked = false
             }
             document.getElementById("checkthis").innerHTML = "Check All";
-
         }
-
     }
 
 </script>

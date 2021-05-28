@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BctAttendance;
+use App\Models\BctAttendanceReport;
 use App\Models\BctStudent;
 use App\Models\BctSubject;
 use Illuminate\Http\Request;
@@ -26,6 +27,13 @@ class AttendanceController extends Controller
     public function index($batch, BctSubject $subject)
     {
         // dd($attendanceStatus);
+        // Checks if the attendance has been closed and if a report has been made.
+        $checkForReport = BctAttendanceReport::where('batch', $batch)
+            ->where('subject_code', $subject->subject_code)
+            ->get();
+        if ($checkForReport->isNotEmpty()) {
+            return redirect('/teachers/closed/attendancedashboard/' . $batch . '/' . $subject->subject_code);
+        }
         $dateNow = Carbon::now('Asia/Kathmandu');
         // get the current day of the attec  dance
         $previousAttendances = BctAttendance::where('subject_code', $subject->subject_code)
@@ -43,6 +51,12 @@ class AttendanceController extends Controller
     }
     public function showAttendanceView($batch, BctSubject $subject, $day)
     {
+        $checkForReport = BctAttendanceReport::where('batch', $batch)
+            ->where('subject_code', $subject->subject_code)
+            ->get();
+        if ($checkForReport->isNotEmpty()) {
+            return redirect('/teachers/closed/attendancedashboard/' . $batch . '/' . $subject->subject_code);
+        }
         $dateNow = Carbon::now('Asia/Kathmandu');
         $nameOfDay = getNameOfDay($dateNow->dayOfWeek);
         $nepaliDate = DateConverter::fromEnglishDate($dateNow->year, $dateNow->month, $dateNow->day)->toNepaliDate();
@@ -56,6 +70,12 @@ class AttendanceController extends Controller
     // This method is responsibe for adding attendance data to the database
     public function recordAttendance($batch, BctSubject $subject, $day)
     {
+        $checkForReport = BctAttendanceReport::where('batch', $batch)
+            ->where('subject_code', $subject->subject_code)
+            ->get();
+        if ($checkForReport->isNotEmpty()) {
+            return redirect('/teachers/closed/attendancedashboard/' . $batch . '/' . $subject->subject_code);
+        }
         if (empty(request()->attendance)) {
             return back()->with('attendanceFailed', 'Attendance can not be empty! Atleast one student must be present.');
         }
@@ -89,6 +109,12 @@ class AttendanceController extends Controller
     // variable lastDay meaning the day of latest attendance taken
     public function showUpdateView($batch, BctSubject $subject, $lastDay)
     {
+        $checkForReport = BctAttendanceReport::where('batch', $batch)
+            ->where('subject_code', $subject->subject_code)
+            ->get();
+        if ($checkForReport->isNotEmpty()) {
+            return redirect('/teachers/closed/attendancedashboard/' . $batch . '/' . $subject->subject_code);
+        }
         $students = BctStudent::where('batch', $batch)->get();
         $previousAttendance = BctAttendance::where('subject_code', $subject->subject_code)
             ->where('batch', $batch)
@@ -104,6 +130,12 @@ class AttendanceController extends Controller
     }
     public function updateAttendance($batch, BctSubject $subject, $lastDay, Request $request)
     {
+        $checkForReport = BctAttendanceReport::where('batch', $batch)
+            ->where('subject_code', $subject->subject_code)
+            ->get();
+        if ($checkForReport->isNotEmpty()) {
+            return redirect('/teachers/closed/attendancedashboard/' . $batch . '/' . $subject->subject_code);
+        }
         $updatedPresentStudents = $request->attendance;
         if (empty($updatedPresentStudents)) {
             return back()->with('attendanceUpdateFailed', "Atleast one student must be present.");
@@ -121,5 +153,19 @@ class AttendanceController extends Controller
             $prev->save();
         }
         return redirect('/teachers/attendancedashboard/' . $batch . '/' . $subject->subject_code)->with('attendanceUpdateSuccess', "Attendance Updated Successfully.");
+    }
+    public function showClosedAttendanceView($batch, BctSubject $subject)
+    {
+        $reportData = BctAttendanceReport::where('batch', $batch)
+            ->where('subject_code', $subject->subject_code)
+            ->get();
+        $students = BctStudent::where('batch', $batch)->get();
+        foreach ($students as $student) {
+            $individualReportData = $reportData->where('roll_number', $student->roll_number)->first();
+            $student->presentDays = $individualReportData->present_days;
+            $student->totalDays = $individualReportData->total_days;
+            $student->presentPercent = round(($individualReportData->present_days / $individualReportData->total_days) * 100, 2);
+        }
+        return view('teacher.closed_attendance_dashboard', compact('batch', 'subject', 'students', 'reportData'));
     }
 }

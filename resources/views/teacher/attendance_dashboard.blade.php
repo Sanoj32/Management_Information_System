@@ -4,13 +4,13 @@
 
 <?php
 use Krishnahimself\DateConverter\DateConverter;
+use App\Models\BctAttendance;
 $nepaliDateToday = DateConverter::fromEnglishDate($dateNow->year, $dateNow->month, $dateNow->day)->toNepaliDate();
 $noOfDays = $day - 1;
 $lastDay = $noOfDays;
 
 //get a student from the list to find out the number of classes that happened in this subject
 $totalClasses = $previousAttendances->count() / $students->count();
-
 
  //Get the nepali date of latest attendance taken
 $thisAttendance =  $previousAttendances->where('day',$day - 1)->first(); // Get the attendance of this specific column
@@ -27,7 +27,6 @@ if($thisAttendance != null){
 <link rel="stylesheet" href="{{asset('css/attendance_table.css')}}">
 <div class="container">
     <div class="row">
-
         <div class="col-md-8">
             <h2>{{$subject->name}} </h2>
             <h2>{{$batch}}th batch | Day {{$day}}</h2>
@@ -50,9 +49,8 @@ if($thisAttendance != null){
 
                 </div>
             </div>
+            @endif
         </div>
-        @endif
-
     </div>
 </div>
 <div class="row pl-1">
@@ -140,20 +138,20 @@ if($thisAttendance != null){
 
                             @if($day >= 6)
                             {{-- Display the P/T tab --}}
-                            <td style="border-right: 1px solid #000000 !important;
-">
+                            <td style="border-right: 1px solid #000000 !important;">
                                 <?php
                                     $presentClasses = 0;
                                         for($i = $totalClasses; $i >=1 ; $i--){
                                 $attendance = $previousAttendances->where('roll_number',$student->roll_number)
                                                                         ->where('day',$i)
-                                                                        ->pluck('attendance')[0];
+                                                                        ->pluck('attendance')[0]; // Possible error source here due to not all rows being deleted after closing the attendance.
                                                                     if($attendance == "P"){
                                                                         $presentClasses += 1;
                                                                     }
                                                                  }
 
                                 ?>
+
                                 {{$presentClasses}}
                             </td>
 

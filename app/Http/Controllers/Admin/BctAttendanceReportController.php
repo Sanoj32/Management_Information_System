@@ -35,6 +35,29 @@ class BctAttendanceReportController extends Controller
         }
         return view('admin.active_attendances', compact('activeAttendances', 'uniqueBatches'));
     }
+    /**
+     * Displays a list of all closed attendances.
+     */
+    public function closedAttendanceIndex()
+    {
+        $uniqueBatches = [];
+        $closedAttendances = BctAttendanceReport::select('batch')->distinct()->get();
+        foreach ($closedAttendances as $closed) {
+            if (!in_array($closed->batch, $uniqueBatches)) {
+                array_push($uniqueBatches, $closed->batch);
+            }
+        }
+        return view('admin.closed_attendance_index', compact('uniqueBatches'));
+    }
+    /**
+     * Returns the list of all closed attendances of a single batch
+     */
+    public function closedAttendances($batch)
+    {
+        $closedAttendances = BctAttendanceReport::select('batch', 'subject_code')->distinct()->get();
+        dd($closedAttendances);
+        return view('admin.closed_attendances_batch');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -72,9 +95,16 @@ class BctAttendanceReportController extends Controller
                 $report->batch = $batch;
                 $report->save();
             }
-            foreach ($attendances as $attendance) {
-                $attendance->delete();
+            foreach ($students as $student) {
+                $attendances = BctAttendance::where('batch', $batch)
+                    ->where('subject_code', $subject->subject_code)
+                    ->where('roll_number', $student->roll_number)
+                    ->get();
+                foreach ($attendances as $attendance) {
+                    $attendance->delete();
+                }
             }
+            return redirect('/admin/closed/attendancedashboard/' . $batch . "/" . $subject->subject_code);
         } else {
             return back()->with('duplicateReport', "This attendance has already been closed");
         }
@@ -104,7 +134,7 @@ class BctAttendanceReportController extends Controller
             ->where('subject_code', $subject->subject_code)
             ->get();
         if ($checkForClosure->isNotEmpty()) {
-            return back()->with('attendanceClosed', "This attendance has been closed by the department");
+            return redirect('admin/closed/attendancedashboard/' . $batch . "/" . $subject->subject_code);
         }
         $dateNow = Carbon::now('Asia/Kathmandu');
         // get the current day of the attendance
@@ -115,7 +145,7 @@ class BctAttendanceReportController extends Controller
             $prev = $previousAttendances->sortByDesc('created_at')->first();
             $day = $prev->day + 1;
             $date = $prev->created_at;
-        }else {
+        } else {
             $day = 1;
         }
         $students = BctStudent::where('batch', $batch)->get();
@@ -154,5 +184,37 @@ class BctAttendanceReportController extends Controller
     public function destroy($id)
     {
         //
+    }
+    /**
+     * Returns a list of all the closed attendances of all subjects of a specific batch
+     */
+    public function showClosedAttendanceView($batch)
+    {
+        $semesters = [1, 2, 3, 4, 5, 6, 7, 8];
+        $reportData = BctAttendanceReport::where('batch', $batch)
+            ->get();
+
+        $subject_codes = [];
+        foreach ($reportData as $data) {
+            if (!in_array($data->subject_code, $subject_codes)) {
+                array_push($subject_codes, $data->subject_code);
+            }
+        }
+        $students = BctStudent::where('batch', $batch)->get();
+        return view('admin.closed_attendances_subjects', compact('batch', 'subject_codes', 'students', 'semesters'));
+    }
+    public function showClosedAttendanceDashboard($batch, BctSubject $subject)
+    {
+        $reportData = BctAttendanceReport::where('batch', $batch)
+            ->where('subject_code', $subject->subject_code)
+            ->get();
+        $students = BctStudent::where('batch', $batch)->get();
+        foreach ($students as $student) {
+            $individualReportData = $reportData->where('roll_number', $student->roll_number)->first();
+            $student->presentDays = $individualReportData->present_days;
+            $student->totalDays = $individualReportData->total_days;
+            $student->presentPercent = round(($individualReportData->present_days / $individualReportData->total_days) * 100, 2);
+        }
+        return view('admin.closed_attendance_dashboard', compact('batch', 'subject', 'students', 'reportData'));
     }
 }

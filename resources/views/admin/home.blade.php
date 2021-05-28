@@ -21,7 +21,10 @@
                             <li class="list-group-item disabled">Register Teachers</li>
                         </a>
                         <a href="/admin/attendance">
-                            <li class="list-group-item disabled">Close Attendance</li>
+                            <li class="list-group-item disabled">Active Attendances</li>
+                        </a>
+                        <a href="/admin/closed/attendance">
+                            <li class="list-group-item disabled"> Closed Attendances</li>
                         </a>
                     </ul>
                 </div>
