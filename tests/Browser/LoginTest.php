@@ -17,6 +17,11 @@ class LoginTest extends DuskTestCase
      */
     public function testExample()
     {
+
+        // $this->browse(function (Browser $browser) {
+        //     $browser->visit('/login')
+        //         ->magic();
+        // });
         $user = User::where('teacher_code', '11111')->first();
         $this->browse(function ($browser) use ($user) {
             $browser->visit('/login')
@@ -33,20 +38,16 @@ class LoginTest extends DuskTestCase
                 ->click('#submitattendance')
                 ->assertPathIs('/teachers/attendancedashboard/74/bctCE451');
         });
-        $admin = Admin::where('email', 'praches@gmail.com')->first();
-        $this->browse(function ($browser) use ($admin) {
-            $browser->visit('/admin/login')
-            ->assertPathIs('/admin/login')
-                ->type('#email', $admin->email)
-                ->type('password', 'zxcvbnm,./')
-                ->press('Login')
-                ->assertPathIs('/admin/home');
-            dd("YOO NICEC MR WHITEE");
-        });
-        
-    }
-    public function adminTest()
-    {
-        
+        // $admin = Admin::where('email', 'praches@gmail.com')->first();
+        // $this->browse(function ($browser) use ($admin) {
+        //     $browser->visit('/admin/login')
+        //     ->assertPathIs('/admin/login')
+        //         ->type('#email', $admin->email)
+        //         ->type('password', 'zxcvbnm,./')
+        //         ->press('Login')
+        //         ->assertPathIs('/admin/home');
+        //     dd("YOO NICEC MR WHITEE");
+        // });
+
     }
 }

@@ -21,6 +21,7 @@ class AttendanceController extends Controller
     {
         //get the subjects the authenticated teacher is allowed to teach
         $teacher = auth()->user();
+
         // $authorizedSubjects = DB::table('bct_authorized_subjects')->where('teacher_code', $teacher->teacher_code)->get();
         return view('teacher.home', compact('teacher'));
     }
@@ -35,7 +36,7 @@ class AttendanceController extends Controller
             return redirect('/teachers/closed/attendancedashboard/' . $batch . '/' . $subject->subject_code);
         }
         $dateNow = Carbon::now('Asia/Kathmandu');
-        // get the current day of the attec  dance
+        // get the current day of the attendance
         $previousAttendances = BctAttendance::where('subject_code', $subject->subject_code)
             ->where('batch', $batch)
             ->get();

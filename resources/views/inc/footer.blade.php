@@ -6,9 +6,10 @@
             <div class="row justify-content-between">
                 <div class="col-sm-12 col-md-12">
                     {{-- <h6>About Us</h6> --}}
-                    <p class="text-center"> Management Information System @ Lalitpur Engineering College </p>
+                    <p class="text-center"> Management Information System @ Lalitpur Engineering College. <a class="navbar-brand " style="text-align:center;" href="{{ url('/updates') }}">
+                            Updates
+                        </a> </p>
                 </div>
-
 
                 {{-- <div class="col-xs-6 col-md-3 ">
                     <h6>Quick Links</h6>
