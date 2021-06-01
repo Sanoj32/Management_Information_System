@@ -65,7 +65,7 @@ class DatabaseSeeder extends Seeder
             $subject['subject_code'] = $data['subject_code'];
             $subject['semester'] = $data['semester'];
             $subject->save();
-            echo ('NEW SUBJECT ENTRY CREATED!');
+            echo ($subject->name);
             array_push($storedSubArray, $data['subject_code']);
         }
 
@@ -91,7 +91,7 @@ class DatabaseSeeder extends Seeder
             $student['roll'] = substr($data['roll_number'], -2);
             $student['is_suspended'] = false;
             $student->save();
-            echo ('NEW student ENTRY CREATED!');
+            echo ($student->name);
             array_push($storedStudentsArray, $data['roll_number']);
         }
         $sanoj = User::where('teacher_code', '11111')->first();

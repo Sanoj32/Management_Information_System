@@ -262,6 +262,36 @@
         "semester": 7
     },
     {
+        "name": "Elective I : Biomedical Instrumentation",
+        "subject_code": "bctEX72503",
+        "semester": 7
+    },
+    {
+        "name": "Elective I : Data Mining",
+        "subject_code": "bctCT72502",
+        "semester": 7
+    },
+    {
+        "name": "Elective I : Embedded System",
+        "subject_code": "bctCT72503",
+        "semester": 7
+    },
+    {
+        "name": "Elective I : Operating System",
+        "subject_code": "bctCT72506",
+        "semester": 7
+    },
+    {
+        "name": "Elective I : Radar Technology",
+        "subject_code": "bctEX72501",
+        "semester": 7
+    },
+    {
+        "name": "Elective I : Satellite Communication",
+        "subject_code": "bctEX72502",
+        "semester": 7
+    },
+    {
         "name": "Engineering Professional Practise ",
         "subject_code": "bctCE752",
         "semester": 8

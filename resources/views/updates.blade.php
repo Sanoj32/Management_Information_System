@@ -7,6 +7,10 @@
             <h1>Change logs</h1>
             <ul>
                 <li class="pb-3">
+                    <h4>2021/5/30</h3>
+                        Close Attendance by admin [Feature]
+                </li>
+                <li class="pb-3">
                     <h4>2021/5/18</h3>
                         Edit specific days [Feature]
                 </li>
