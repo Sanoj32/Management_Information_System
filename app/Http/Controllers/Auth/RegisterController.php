@@ -36,6 +36,8 @@ class RegisterController extends Controller
      *
      * @return void
      */
+
+    // The middleware auth:admin returns a guest user to the teacher login page.
     public function __construct()
     {
         $this->middleware(['auth:admin']);

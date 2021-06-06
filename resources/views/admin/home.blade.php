@@ -26,6 +26,14 @@
                         <a href="/admin/closed/attendance">
                             <li class="list-group-item disabled"> Closed Attendances</li>
                         </a>
+                        <hr>
+                        <h2> Attendance Analysis</h2>
+                        <a href="/admin/analysis/student">
+                            <li class="list-group-item disabled"> Student Analysis</li>
+                        </a>
+                        <a href="/admin/analysis/batch">
+                            <li class="list-group-item disabled"> Batch Analysis</li>
+                        </a>
                     </ul>
                 </div>
             </div>

@@ -7,7 +7,9 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\Admin\StudentAnalysisController;
+use App\Http\Controllers\Admin\AttendancePermissionController;
+use App\Http\Controllers\Admin\BctAttendanceReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,20 +47,24 @@ Route::prefix('/admin')->name('admin.')->group(function () {
     Route::get('/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home')->middleware('auth:admin');
 
     //Grant various permissions
-    Route::get('/teachers', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'index']);
-    Route::get('/teachers/{teacher_code}', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'showProfile']);
-    Route::get('/teachers/{teacher_code}/edit/{batch}', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'showEditView']);
+    Route::get('/teachers', [AttendancePermissionController::class, 'index']);
+    Route::get('/teachers/{teacher_code}', [AttendancePermissionController::class, 'showProfile']);
+    Route::get('/teachers/{teacher_code}/edit/{batch}', [AttendancePermissionController::class, 'showEditView']);
 
-    Route::post('/teachers/{teacher_code}/edit/{batch}/{subject_code}', [\App\Http\Controllers\Admin\AttendancePermissionController::class, 'changePermission']);
+    Route::post('/teachers/{teacher_code}/edit/{batch}/{subject_code}', [AttendancePermissionController::class, 'changePermission']);
     // Route::get('/students/{roll}',[])
 
     // Bct Attendance Report Controller
-    Route::get('/attendance', [\App\Http\Controllers\Admin\BctAttendanceReportController::class, 'index']);
-    Route::get('/attendance/{batch}/{subject}', [\App\Http\Controllers\Admin\BctAttendanceReportController::class, 'show']);
-    Route::post('/attendance/close/{batch}/{subject}', [\App\Http\Controllers\Admin\BctAttendanceReportController::class, 'create']);
-    Route::get('/closed/attendance', [\App\Http\Controllers\Admin\BctAttendanceReportController::class, 'closedAttendanceIndex']);
-    Route::get('/closed/attendancedashboard/{batch}/{subject}', [\App\Http\Controllers\Admin\BctAttendanceReportController::class, 'showClosedAttendanceDashboard']);
-    Route::get('/closed/attendance/{batch}', [\App\Http\Controllers\Admin\BctAttendanceReportController::class, 'showClosedAttendanceView']);
+    Route::get('/attendance', [BctAttendanceReportController::class, 'index']);
+    Route::get('/attendance/{batch}/{subject}', [BctAttendanceReportController::class, 'show']);
+    Route::post('/attendance/close/{batch}/{subject}', [BctAttendanceReportController::class, 'create']);
+    Route::get('/closed/attendance', [BctAttendanceReportController::class, 'closedAttendanceIndex']);
+    Route::get('/closed/attendancedashboard/{batch}/{subject}', [BctAttendanceReportController::class, 'showClosedAttendanceDashboard']);
+    Route::get('/closed/attendance/{batch}', [BctAttendanceReportController::class, 'showClosedAttendanceView']);
+
+    // Student attendance analysis routes
+    Route::get('/analysis/student', [StudentAnalysisController::class, 'index']); // Returns select student view
+    Route::post('/analysis/student', [StudentAnalysisController::class, 'show']);  // Returns the attendance analysis of a single student.
 });
 
 

@@ -11,7 +11,7 @@
                         @foreach ($uniquetches as $batch )
                         <a href="/admin/closed/attendance/" . <?=$batch?>>
                             <li class="list-group-item disabled">{{$batch}} th batch</li>
-                        </a>
+                    </a>
                         @endforeach
                     </ul>
                 </div>
