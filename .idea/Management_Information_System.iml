@@ -119,7 +119,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-package-tools" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/wulfheart/pretty_routes" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/krishnahimself/laravel-ad-to-bs-converter" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/magic-test/magic-test-laravel" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/dusk" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/php-webdriver/webdriver" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/backtrace" />
