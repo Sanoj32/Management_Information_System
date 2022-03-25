@@ -9,6 +9,9 @@
 
                 <h1>Login as Admin </h1>
             </a>
+            Dummy Admin account for testin purpose:
+            email = sanoj.shrestha.13@gmail.com
+            password = adminpass
         </div>
         <div class="col-md-6">
             <a href="/login">
