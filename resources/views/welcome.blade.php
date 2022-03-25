@@ -14,6 +14,11 @@
             <a href="/login">
                 <h1>Login as Teacher </h1>
             </a>
+            Dummy Teacher account for testing purpose:
+            <br>
+                email = sanoj.shrestha.13@gmail.com
+                <br>
+                password = password
         </div>
     </div>
 </div>
